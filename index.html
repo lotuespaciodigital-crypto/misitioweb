@@ -9,7 +9,7 @@
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white">
 
-   <!-- 1. Encabezado / Navegación -->
+  <!-- 1. Encabezado / Navegación -->
 <header class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/80 border-b border-slate-800">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         <!-- Logo / Marca -->
@@ -17,7 +17,7 @@
             N.L. Digital Hub
         </a>
 
-        <!-- Navegación para Computadoras (Escritorio) -->
+        <!-- Navegación Escritorio -->
         <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
             <a href="#servicios" class="hover:text-indigo-400 transition-colors">Servicios</a>
             <a href="#microapps" class="hover:text-indigo-400 transition-colors">Micro Apps</a>
@@ -26,60 +26,96 @@
         </nav>
 
         <!-- Botón Menú Hamburguesa (Solo Celulares) -->
-        <button id="mobileMenuBtn" aria-label="Abrir menú" class="md:hidden p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:bg-slate-800 focus:outline-none transition-all">
-            <!-- Icono Hamburguesa (3 líneas) -->
+        <button id="mobileMenuBtn" aria-label="Abrir menú" class="md:hidden p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:bg-slate-800 focus:outline-none transition-all z-50">
             <svg id="menuIcon" class="w-6 h-6 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
-            <!-- Icono Cerrar (X) oculto por defecto -->
             <svg id="closeIcon" class="w-6 h-6 hidden transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
             </svg>
         </button>
     </div>
 
-    <!-- Desplegable del Menú Celular -->
-    <div id="mobileMenu" class="hidden md:hidden border-b border-slate-800 bg-slate-950/95 backdrop-blur-xl transition-all duration-300 ease-in-out">
-        <div class="px-6 pt-4 pb-6 space-y-4 text-center">
-            <a href="#servicios" class="mobile-link block py-2.5 text-base font-medium text-slate-200 hover:text-indigo-400 hover:bg-slate-900/60 rounded-xl transition-colors">
-                Servicios
-            </a>
-            <a href="#microapps" class="mobile-link block py-2.5 text-base font-medium text-slate-200 hover:text-indigo-400 hover:bg-slate-900/60 rounded-xl transition-colors">
-                Micro Apps
-            </a>
-            <a href="#about" class="mobile-link block py-2.5 text-base font-medium text-slate-200 hover:text-indigo-400 hover:bg-slate-900/60 rounded-xl transition-colors">
-                Sobre Mí
-            </a>
-            <div class="pt-2">
-                <a href="#contacto" class="mobile-link block w-full py-3 px-6 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-500 text-white font-semibold shadow-lg shadow-indigo-600/30 hover:opacity-95 transition-all">
-                    Contactar por WhatsApp
+    <!-- Fondo Oscuro Translúcido (Backdrop) -->
+    <div id="menuOverlay" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-500 z-40"></div>
+
+    <!-- Panel Desplegable Lateral con Efecto "Página de Papel" -->
+    <div id="mobileMenu" 
+         class="fixed top-0 right-0 h-screen w-4/5 max-w-sm bg-slate-900/95 border-l border-indigo-500/30 p-8 shadow-2xl z-40 flex flex-col justify-between transition-all duration-500 ease-out pointer-events-none"
+         style="transform-origin: right center; transform: perspective(1200px) rotateY(-85deg) translateX(100%); opacity: 0;">
+        
+        <!-- Contenido del Menú -->
+        <div class="pt-20 space-y-6">
+            <span class="text-xs font-semibold tracking-wider text-indigo-400 uppercase bg-indigo-950/60 px-3 py-1 rounded-full border border-indigo-800/50">
+                Navegación
+            </span>
+            <nav class="space-y-4 pt-4">
+                <a href="#servicios" class="mobile-link block text-lg font-semibold text-slate-200 hover:text-indigo-400 transition-colors border-b border-slate-800/80 pb-3">
+                    Servicios
                 </a>
-            </div>
+                <a href="#microapps" class="mobile-link block text-lg font-semibold text-slate-200 hover:text-indigo-400 transition-colors border-b border-slate-800/80 pb-3">
+                    Micro Apps
+                </a>
+                <a href="#about" class="mobile-link block text-lg font-semibold text-slate-200 hover:text-indigo-400 transition-colors border-b border-slate-800/80 pb-3">
+                    Sobre Mí
+                </a>
+            </nav>
+        </div>
+
+        <!-- Botón de Acción / Contacto al Pie del Menú -->
+        <div class="pb-8">
+            <a href="#contacto" class="mobile-link block w-full text-center py-3.5 px-6 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-500 text-white font-semibold shadow-lg shadow-indigo-600/30 hover:opacity-95 transition-all">
+                Contactar por WhatsApp
+            </a>
         </div>
     </div>
 </header>
 
-<!-- Script para el funcionamiento del Menú Hamburguesa -->
+<!-- Script para la animación 3D "Página de Papel" -->
 <script>
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
     const menuIcon = document.getElementById('menuIcon');
     const closeIcon = document.getElementById('closeIcon');
     const mobileLinks = document.querySelectorAll('.mobile-link');
 
-    // Alternar abrir/cerrar menú
-    mobileMenuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-        menuIcon.classList.toggle('hidden');
-        closeIcon.classList.toggle('hidden');
-    });
+    let isOpen = false;
 
-    // Cerrar menú automáticamente cuando el usuario toca un enlace
-    mobileLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
+    function toggleMenu() {
+        isOpen = !isOpen;
+
+        if (isOpen) {
+            // Abrir menú con efecto página de papel
+            mobileMenu.style.transform = 'perspective(1200px) rotateY(0deg) translateX(0%)';
+            mobileMenu.style.opacity = '1';
+            mobileMenu.classList.remove('pointer-events-none');
+            
+            menuOverlay.classList.remove('opacity-0', 'pointer-events-none');
+            menuOverlay.classList.add('opacity-100');
+
+            menuIcon.classList.add('hidden');
+            closeIcon.classList.remove('hidden');
+        } else {
+            // Cerrar menú replegando la página hacia la derecha
+            mobileMenu.style.transform = 'perspective(1200px) rotateY(-85deg) translateX(100%)';
+            mobileMenu.style.opacity = '0';
+            mobileMenu.classList.add('pointer-events-none');
+
+            menuOverlay.classList.add('opacity-0', 'pointer-events-none');
+            menuOverlay.classList.remove('opacity-100');
+
             menuIcon.classList.remove('hidden');
             closeIcon.classList.add('hidden');
+        }
+    }
+
+    mobileMenuBtn.addEventListener('click', toggleMenu);
+    menuOverlay.addEventListener('click', toggleMenu);
+
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (isOpen) toggleMenu();
         });
     });
 </script>
