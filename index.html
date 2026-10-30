@@ -117,9 +117,9 @@
         });
     });
 </script>
-<!-- CARRUSEL DE IMPACTO -->
+<!-- CARRUSEL DE IMPACTO CON SOPORTE TÁCTIL -->
 <section class="relative max-w-7xl mx-auto px-6 pt-8 pb-12 overflow-hidden">
-    <div id="carousel" class="relative w-full rounded-3xl overflow-hidden border border-slate-800 shadow-2xl bg-slate-900">
+    <div id="carousel" class="relative w-full rounded-3xl overflow-hidden border border-slate-800 shadow-2xl bg-slate-900 touch-pan-y">
         
         <!-- Slides Container -->
         <div id="slides" class="flex transition-transform duration-500 ease-out w-full">
@@ -134,10 +134,10 @@
                         Tu tienda online lista para vender en la plataforma ideal
                     </h2>
                     <p class="text-slate-300 text-sm md:text-base mb-6">
-                        Desarrollo a medida en WordPress + WooCommerce,  Tiendanube, Shopify, PrestaShop, Empretienda o Tienda Negocio. Nos adaptamos a la escala y presupuesto de tu negocio.
+                        Desarrollo a medida en Tiendanube, Shopify, PrestaShop, Empretienda o Tienda Negocio. Nos adaptamos a la escala y presupuesto de tu negocio.
                     </p>
                     <a href="#contacto" class="inline-block px-6 py-3 rounded-xl bg-indigo-600 text-white font-semibold text-sm hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-600/30">
-                        Asesorate
+                        Crear mi Tienda
                     </a>
                 </div>
             </div>
@@ -180,11 +180,11 @@
 
         </div>
 
-        <!-- Botones de Navegación (Izquierda / Derecha) -->
-        <button id="prevBtn" class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-900/80 border border-slate-700 text-white flex items-center justify-center hover:bg-slate-800 transition-colors">
+        <!-- Botones de Navegación (Solo visibles en PC/Escritorio: hidden md:flex) -->
+        <button id="prevBtn" class="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-900/80 border border-slate-700 text-white items-center justify-center hover:bg-slate-800 transition-colors">
             ❮
         </button>
-        <button id="nextBtn" class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-900/80 border border-slate-700 text-white flex items-center justify-center hover:bg-slate-800 transition-colors">
+        <button id="nextBtn" class="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-900/80 border border-slate-700 text-white items-center justify-center hover:bg-slate-800 transition-colors">
             ❯
         </button>
 
@@ -197,11 +197,12 @@
     </div>
 </section>
 
-<!-- SCRIPT PARA EL FUNCIONAMIENTO DEL CARRUSEL -->
+<!-- SCRIPT CON SOPORTE TÁCTIL (SWIPE) -->
 <script>
     let currentSlide = 0;
     const slides = document.getElementById('slides');
     const dots = document.querySelectorAll('.dot');
+    const carousel = document.getElementById('carousel');
     const totalSlides = 3;
 
     function updateCarousel() {
@@ -222,6 +223,7 @@
         updateCarousel();
     }
 
+    // Botones PC
     document.getElementById('nextBtn').addEventListener('click', () => {
         currentSlide = (currentSlide + 1) % totalSlides;
         updateCarousel();
@@ -231,6 +233,32 @@
         currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
         updateCarousel();
     });
+
+    // Detectar Gestos Táctiles (Swipe con el dedo en Celulares/Tablets)
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    carousel.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    carousel.addEventListener('touchend', e => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+        const swipeThreshold = 50; // Sensibilidad del deslizamiento
+        if (touchStartX - touchEndX > swipeThreshold) {
+            // Deslizar a la izquierda (siguiente)
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        } else if (touchEndX - touchStartX > swipeThreshold) {
+            // Deslizar a la derecha (anterior)
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+    }
 
     // Avance automático cada 6 segundos
     setInterval(() => {
