@@ -23,7 +23,127 @@
             </nav>
         </div>
     </header>
+<!-- CARRUSEL DE IMPACTO -->
+<section class="relative max-w-7xl mx-auto px-6 pt-8 pb-12 overflow-hidden">
+    <div id="carousel" class="relative w-full rounded-3xl overflow-hidden border border-slate-800 shadow-2xl bg-slate-900">
+        
+        <!-- Slides Container -->
+        <div id="slides" class="flex transition-transform duration-500 ease-out w-full">
+            
+            <!-- Slide 1: Creación de Tiendas -->
+            <div class="min-w-full relative p-8 md:p-14 bg-gradient-to-r from-indigo-950/90 via-slate-900 to-slate-950 flex flex-col justify-center">
+                <div class="max-w-2xl relative z-10">
+                    <span class="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-indigo-400 uppercase bg-indigo-950/60 rounded-full border border-indigo-800/50">
+                        Diseño & Desarrollo Web
+                    </span>
+                    <h2 class="text-2xl md:text-4xl font-extrabold text-white mb-4 leading-tight">
+                        Tu tienda online lista para vender en la plataforma ideal
+                    </h2>
+                    <p class="text-slate-300 text-sm md:text-base mb-6">
+                        Desarrollo a medida en Tiendanube, Shopify, PrestaShop, Empretienda o Tienda Negocio. Nos adaptamos a la escala y presupuesto de tu negocio.
+                    </p>
+                    <a href="#contacto" class="inline-block px-6 py-3 rounded-xl bg-indigo-600 text-white font-semibold text-sm hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-600/30">
+                        Crear mi Tienda
+                    </a>
+                </div>
+            </div>
 
+            <!-- Slide 2: Mantenimiento & SEO Mensual -->
+            <div class="min-w-full relative p-8 md:p-14 bg-gradient-to-r from-emerald-950/80 via-slate-900 to-slate-950 flex flex-col justify-center">
+                <div class="max-w-2xl relative z-10">
+                    <span class="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-emerald-400 uppercase bg-emerald-950/60 rounded-full border border-emerald-800/50">
+                        Gestión & Mantenimiento Mensual
+                    </span>
+                    <h2 class="text-2xl md:text-4xl font-extrabold text-white mb-4 leading-tight">
+                        Optimizá y mantené tu e-commerce al día sin perder tiempo
+                    </h2>
+                    <p class="text-slate-300 text-sm md:text-base mb-6">
+                        Carga masiva de productos, posicionamiento SEO comercial, actualización de promociones y soporte continuo para marcas en crecimiento.
+                    </p>
+                    <a href="#contacto" class="inline-block px-6 py-3 rounded-xl bg-emerald-600 text-white font-semibold text-sm hover:bg-emerald-500 transition-all shadow-lg shadow-emerald-600/30">
+                        Ver Servicios Mensuales
+                    </a>
+                </div>
+            </div>
+
+            <!-- Slide 3: Micro Apps & Automatización -->
+            <div class="min-w-full relative p-8 md:p-14 bg-gradient-to-r from-cyan-950/80 via-slate-900 to-slate-950 flex flex-col justify-center">
+                <div class="max-w-2xl relative z-10">
+                    <span class="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-cyan-400 uppercase bg-cyan-950/60 rounded-full border border-cyan-800/50">
+                        Soluciones Tecnológicas
+                    </span>
+                    <h2 class="text-2xl md:text-4xl font-extrabold text-white mb-4 leading-tight">
+                        Micro-Apps interactivas para potenciar tus operaciones
+                    </h2>
+                    <p class="text-slate-300 text-sm md:text-base mb-6">
+                        Herramientas a medida como agendas de turnos, calculadoras y gestores integrados a bases de datos seguras en la nube.
+                    </p>
+                    <a href="#microapps" class="inline-block px-6 py-3 rounded-xl bg-cyan-600 text-white font-semibold text-sm hover:bg-cyan-500 transition-all shadow-lg shadow-cyan-600/30">
+                        Explorar Apps
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Botones de Navegación (Izquierda / Derecha) -->
+        <button id="prevBtn" class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-900/80 border border-slate-700 text-white flex items-center justify-center hover:bg-slate-800 transition-colors">
+            ❮
+        </button>
+        <button id="nextBtn" class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-900/80 border border-slate-700 text-white flex items-center justify-center hover:bg-slate-800 transition-colors">
+            ❯
+        </button>
+
+        <!-- Indicadores (Puntos) -->
+        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
+            <button class="dot w-3 h-3 rounded-full bg-white transition-all" onclick="goToSlide(0)"></button>
+            <button class="dot w-3 h-3 rounded-full bg-white/40 transition-all" onclick="goToSlide(1)"></button>
+            <button class="dot w-3 h-3 rounded-full bg-white/40 transition-all" onclick="goToSlide(2)"></button>
+        </div>
+    </div>
+</section>
+
+<!-- SCRIPT PARA EL FUNCIONAMIENTO DEL CARRUSEL -->
+<script>
+    let currentSlide = 0;
+    const slides = document.getElementById('slides');
+    const dots = document.querySelectorAll('.dot');
+    const totalSlides = 3;
+
+    function updateCarousel() {
+        slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+        dots.forEach((dot, index) => {
+            if (index === currentSlide) {
+                dot.classList.add('bg-white');
+                dot.classList.remove('bg-white/40');
+            } else {
+                dot.classList.remove('bg-white');
+                dot.classList.add('bg-white/40');
+            }
+        });
+    }
+
+    function goToSlide(index) {
+        currentSlide = index;
+        updateCarousel();
+    }
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateCarousel();
+    });
+
+    document.getElementById('prevBtn').addEventListener('click', () => {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        updateCarousel();
+    });
+
+    // Avance automático cada 6 segundos
+    setInterval(() => {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateCarousel();
+    }, 6000);
+</script>
     <!-- 2. Sección Principal (Hero) -->
     <section class="relative overflow-hidden py-24 md:py-32 border-b border-slate-900">
         <div class="absolute inset-0 bg-[linear-gradient(to_right,#1e293b15_1px,transparent_1px),linear-gradient(to_bottom,#1e293b15_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
