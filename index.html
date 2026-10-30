@@ -1,36 +1,134 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Sitio Web & Micro Apps</title>
-    <!-- Tailwind CSS para diseño rápido -->
+    <title>Soluciones Digitales & E-Commerce | Hub Profesional</title>
+    <!-- Tailwind CSS CDN para un diseño moderno y rápido -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-slate-100 text-slate-800 font-sans min-h-screen flex flex-col justify-between">
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white">
 
-    <!-- Encabezado -->
-    <header class="bg-indigo-600 text-white p-6 text-center shadow-md">
-        <h1 class="text-3xl font-bold">Soluciones Digitales & E-Commerce</h1>
-        <p class="text-indigo-100 mt-2">Consultoría, Estrategia y Micro Apps</p>
+    <!-- 1. Encabezado / Navegación -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/80 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="text-xl font-bold tracking-tight bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+                N.L. Digital Hub
+            </a>
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+                <a href="#servicios" class="hover:text-indigo-400 transition-colors">Servicios</a>
+                <a href="#microapps" class="hover:text-indigo-400 transition-colors">Micro Apps</a>
+                <a href="#about" class="hover:text-indigo-400 transition-colors">Sobre Mí</a>
+                <a href="#contacto" class="px-4 py-2 rounded-full bg-indigo-600 text-white hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-500/20">Contacto</a>
+            </nav>
+        </div>
     </header>
 
-    <!-- Contenido Principal -->
-    <main class="max-w-3xl mx-auto p-6 w-full flex-grow">
-        <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 text-center my-6">
-            <h2 class="text-2xl font-bold mb-3 text-indigo-900">¡Sitio Web en Construcción!</h2>
-            <p class="text-slate-600 mb-6">
-                Muy pronto vas a poder acceder a nuestras Micro Apps de gestión y servicios de e-commerce.
+    <!-- 2. Sección Principal (Hero) -->
+    <section class="relative overflow-hidden py-24 md:py-32 border-b border-slate-900">
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#1e293b15_1px,transparent_1px),linear-gradient(to_bottom,#1e293b15_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+        <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
+            <span class="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-wider text-indigo-400 uppercase bg-indigo-950/50 rounded-full border border-indigo-800/50">
+                Consultoría, Estrategia & E-Commerce
+            </span>
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+                Impulsamos tu ecosistema digital hacia el <span class="bg-gradient-to-r from-indigo-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">próximo nivel</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-400 mb-10 max-w-2xl mx-auto">
+                Soluciones tecnológicas escalables, optimización de canales de venta online y herramientas interactivas a medida para potenciar negocios digitales.
             </p>
-            <a href="https://wa.me/" target="_blank" class="inline-block bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-3 px-6 rounded-xl transition shadow">
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#microapps" class="px-8 py-4 rounded-xl bg-indigo-600 font-semibold text-white hover:bg-indigo-500 transition-all shadow-xl shadow-indigo-600/30">
+                    Explorar Micro Apps
+                </a>
+                <a href="#contacto" class="px-8 py-4 rounded-xl bg-slate-900 font-semibold text-slate-300 hover:bg-slate-800 border border-slate-800 transition-all">
+                    Agendar Consultoría
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Ecosistema de Micro Apps -->
+    <section id="microapps" class="py-24 bg-slate-900/30">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold tracking-tight text-white mb-4">Ecosistema de Micro Apps</h2>
+                <p class="text-slate-400">Herramientas digitales eficientes y conectadas en tiempo real para optimizar procesos comerciales.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- App 1: Turnos -->
+                <div class="p-8 rounded-2xl bg-slate-900 border border-slate-800 hover:border-indigo-500/50 transition-all group">
+                    <div class="w-12 h-12 rounded-lg bg-indigo-600/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 font-bold text-xl mb-6 group-hover:scale-110 transition-transform">
+                        📅
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-3">Agenda de Turnos Online</h3>
+                    <p class="text-slate-400 text-sm mb-6">Sistema integral de gestión y reservas de citas sincronizado con bases de datos seguras.</p>
+                    <span class="inline-flex items-center text-sm font-semibold text-indigo-400 cursor-not-allowed opacity-80">
+                        Próximamente en línea &rarr;
+                    </span>
+                </div>
+                <!-- App 2: Próxima App -->
+                <div class="p-8 rounded-2xl bg-slate-900 border border-slate-800 hover:border-cyan-500/50 transition-all group">
+                    <div class="w-12 h-12 rounded-lg bg-cyan-600/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 font-bold text-xl mb-6 group-hover:scale-110 transition-transform">
+                        ⚡
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-3">Próxima Herramienta E-Commerce</h3>
+                    <p class="text-slate-400 text-sm mb-6">Nueva solución modular en desarrollo orientada a la automatización de procesos digitales.</p>
+                    <span class="text-xs px-3 py-1 rounded-full bg-slate-800 text-slate-400 font-medium">En desarrollo</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Servicios de Consultoría -->
+    <section id="servicios" class="py-24 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold tracking-tight text-white mb-4">Servicios Profesionales</h2>
+                <p class="text-slate-400">Estrategias especializadas para potenciar tu presencia y rentabilidad en entornos digitales.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-6 rounded-xl bg-slate-900/50 border border-slate-800/80">
+                    <h3 class="text-lg font-semibold text-white mb-2">Estrategia E-Commerce</h3>
+                    <p class="text-sm text-slate-400">Diagnóstico, planificación y optimización integral de canales de venta online orientados a la conversión.</p>
+                </div>
+                <div class="p-6 rounded-xl bg-slate-900/50 border border-slate-800/80">
+                    <h3 class="text-lg font-semibold text-white mb-2">Arquitectura Web Modular</h3>
+                    <p class="text-sm text-slate-400">Desarrollo de ecosistemas digitales seguros, rápidos y de bajo costo operativo utilizando infraestructura cloud moderna.</p>
+                </div>
+                <div class="p-6 rounded-xl bg-slate-900/50 border border-slate-800/80">
+                    <h3 class="text-lg font-semibold text-white mb-2">Optimización y Procesos</h3>
+                    <p class="text-sm text-slate-400">Automatización de tareas operativas y gestión eficiente de bases de datos para escalar tu negocio.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Sobre Mí -->
+    <section id="about" class="py-24 bg-slate-900/30 border-t border-slate-900">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold tracking-tight text-white mb-6">Sobre Mí</h2>
+            <p class="text-slate-300 text-lg leading-relaxed mb-6">
+                Como profesional especializada en Comercio Electrónico, diseño soluciones digitales robustas que combinan una experiencia de usuario impecable con una infraestructura técnica segura, ágil y eficiente.
+            </p>
+            <div class="text-sm text-indigo-400 font-medium">
+                Licenciatura en Comercio Electrónico — UTN
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Footer & Contacto -->
+    <footer id="contacto" class="py-16 border-t border-slate-900 bg-slate-950 text-center">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-2xl font-bold text-white mb-4">¿Charlamos sobre tu próximo proyecto?</h2>
+            <p class="text-slate-400 mb-8 max-w-md mx-auto">Conectemos para llevar tus ideas digitales al siguiente nivel.</p>
+            <a href="https://wa.me/" target="_blank" class="inline-block mb-12 px-8 py-4 rounded-xl bg-emerald-600 font-semibold text-white hover:bg-emerald-500 transition-all shadow-lg shadow-emerald-600/20">
                 Contactar por WhatsApp
             </a>
+            <div class="text-xs text-slate-600 border-t border-slate-900 pt-8">
+                &copy; 2026 • Licenciatura en Comercio Electrónico. Todos los derechos reservados.
+            </div>
         </div>
-    </main>
-
-    <!-- Pie de página -->
-    <footer class="bg-slate-900 text-slate-400 text-center p-4 text-sm">
-        <p>&copy; 2026 - Licenciatura en Comercio Electrónico</p>
     </footer>
 
 </body>
