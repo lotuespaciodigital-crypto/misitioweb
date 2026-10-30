@@ -9,20 +9,80 @@
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white">
 
-    <!-- 1. Encabezado / Navegación -->
-    <header class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/80 border-b border-slate-800">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="#" class="text-xl font-bold tracking-tight bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
-                LOTU Espacio Digital
+   <!-- 1. Encabezado / Navegación -->
+<header class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/80 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <!-- Logo / Marca -->
+        <a href="#" class="text-xl font-bold tracking-tight bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+            N.L. Digital Hub
+        </a>
+
+        <!-- Navegación para Computadoras (Escritorio) -->
+        <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+            <a href="#servicios" class="hover:text-indigo-400 transition-colors">Servicios</a>
+            <a href="#microapps" class="hover:text-indigo-400 transition-colors">Micro Apps</a>
+            <a href="#about" class="hover:text-indigo-400 transition-colors">Sobre Mí</a>
+            <a href="#contacto" class="px-4 py-2 rounded-full bg-indigo-600 text-white hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-500/20">Contacto</a>
+        </nav>
+
+        <!-- Botón Menú Hamburguesa (Solo Celulares) -->
+        <button id="mobileMenuBtn" aria-label="Abrir menú" class="md:hidden p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:bg-slate-800 focus:outline-none transition-all">
+            <!-- Icono Hamburguesa (3 líneas) -->
+            <svg id="menuIcon" class="w-6 h-6 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+            <!-- Icono Cerrar (X) oculto por defecto -->
+            <svg id="closeIcon" class="w-6 h-6 hidden transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Desplegable del Menú Celular -->
+    <div id="mobileMenu" class="hidden md:hidden border-b border-slate-800 bg-slate-950/95 backdrop-blur-xl transition-all duration-300 ease-in-out">
+        <div class="px-6 pt-4 pb-6 space-y-4 text-center">
+            <a href="#servicios" class="mobile-link block py-2.5 text-base font-medium text-slate-200 hover:text-indigo-400 hover:bg-slate-900/60 rounded-xl transition-colors">
+                Servicios
             </a>
-            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
-                <a href="#servicios" class="hover:text-indigo-400 transition-colors">Servicios</a>
-                <a href="#microapps" class="hover:text-indigo-400 transition-colors">Micro Apps</a>
-                <a href="#about" class="hover:text-indigo-400 transition-colors">Sobre Mí</a>
-                <a href="#contacto" class="px-4 py-2 rounded-full bg-indigo-600 text-white hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-500/20">Contacto</a>
-            </nav>
+            <a href="#microapps" class="mobile-link block py-2.5 text-base font-medium text-slate-200 hover:text-indigo-400 hover:bg-slate-900/60 rounded-xl transition-colors">
+                Micro Apps
+            </a>
+            <a href="#about" class="mobile-link block py-2.5 text-base font-medium text-slate-200 hover:text-indigo-400 hover:bg-slate-900/60 rounded-xl transition-colors">
+                Sobre Mí
+            </a>
+            <div class="pt-2">
+                <a href="#contacto" class="mobile-link block w-full py-3 px-6 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-500 text-white font-semibold shadow-lg shadow-indigo-600/30 hover:opacity-95 transition-all">
+                    Contactar por WhatsApp
+                </a>
+            </div>
         </div>
-    </header>
+    </div>
+</header>
+
+<!-- Script para el funcionamiento del Menú Hamburguesa -->
+<script>
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuIcon = document.getElementById('menuIcon');
+    const closeIcon = document.getElementById('closeIcon');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    // Alternar abrir/cerrar menú
+    mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+    });
+
+    // Cerrar menú automáticamente cuando el usuario toca un enlace
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            menuIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+        });
+    });
+</script>
 <!-- CARRUSEL DE IMPACTO -->
 <section class="relative max-w-7xl mx-auto px-6 pt-8 pb-12 overflow-hidden">
     <div id="carousel" class="relative w-full rounded-3xl overflow-hidden border border-slate-800 shadow-2xl bg-slate-900">
