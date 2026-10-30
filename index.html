@@ -9,7 +9,7 @@
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white">
 
-  <!-- 1. Encabezado / Navegación -->
+<!-- 1. Encabezado / Navegación -->
 <header class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/80 border-b border-slate-800">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         <!-- Logo / Marca -->
@@ -41,15 +41,15 @@
 
     <!-- Panel Desplegable Lateral con Efecto "Página de Papel" -->
     <div id="mobileMenu" 
-         class="fixed top-0 right-0 h-screen w-4/5 max-w-sm bg-slate-900/95 border-l border-indigo-500/30 p-8 shadow-2xl z-40 flex flex-col justify-between transition-all duration-500 ease-out pointer-events-none"
+         class="fixed top-0 right-0 h-[100dvh] w-4/5 max-w-sm bg-slate-900/95 border-l border-indigo-500/30 p-6 sm:p-8 shadow-2xl z-40 flex flex-col justify-between transition-all duration-500 ease-out pointer-events-none overflow-y-auto"
          style="transform-origin: right center; transform: perspective(1200px) rotateY(-85deg) translateX(100%); opacity: 0;">
         
         <!-- Contenido del Menú -->
-        <div class="pt-20 space-y-6">
+        <div class="pt-16 space-y-6">
             <span class="text-xs font-semibold tracking-wider text-indigo-400 uppercase bg-indigo-950/60 px-3 py-1 rounded-full border border-indigo-800/50">
                 Navegación
             </span>
-            <nav class="space-y-4 pt-4">
+            <nav class="space-y-3 pt-2">
                 <a href="#servicios" class="mobile-link block text-lg font-semibold text-slate-200 hover:text-indigo-400 transition-colors border-b border-slate-800/80 pb-3">
                     Servicios
                 </a>
@@ -62,10 +62,10 @@
             </nav>
         </div>
 
-        <!-- Botón de Acción / Contacto al Pie del Menú -->
-        <div class="pb-8">
-            <a href="#contacto" class="mobile-link block w-full text-center py-3.5 px-6 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-500 text-white font-semibold shadow-lg shadow-indigo-600/30 hover:opacity-95 transition-all">
-                Contactar por WhatsApp
+        <!-- Botón de Acción / Contacto al Pie del Menú (Adaptado a Mobile) -->
+        <div class="pt-6 pb-6">
+            <a href="https://wa.me/" target="_blank" class="mobile-link flex items-center justify-center gap-2 w-full text-center py-3.5 px-4 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-500 text-white font-semibold shadow-lg shadow-emerald-600/20 hover:opacity-95 transition-all text-sm">
+                <span>💬</span> Contactar por WhatsApp
             </a>
         </div>
     </div>
@@ -86,7 +86,6 @@
         isOpen = !isOpen;
 
         if (isOpen) {
-            // Abrir menú con efecto página de papel
             mobileMenu.style.transform = 'perspective(1200px) rotateY(0deg) translateX(0%)';
             mobileMenu.style.opacity = '1';
             mobileMenu.classList.remove('pointer-events-none');
@@ -97,7 +96,6 @@
             menuIcon.classList.add('hidden');
             closeIcon.classList.remove('hidden');
         } else {
-            // Cerrar menú replegando la página hacia la derecha
             mobileMenu.style.transform = 'perspective(1200px) rotateY(-85deg) translateX(100%)';
             mobileMenu.style.opacity = '0';
             mobileMenu.classList.add('pointer-events-none');
