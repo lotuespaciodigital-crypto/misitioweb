@@ -3,615 +3,452 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soluciones Digitales & E-Commerce | Hub Profesional</title>
-    <!-- Tailwind CSS CDN para un diseño moderno y rápido -->
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white overflow-x-hidden">
-<!-- 1. Encabezado / Navegación -->
-<header class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/80 border-b border-slate-800">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-        <!-- Logo / Marca -->
-        <a href="#" class="text-xl font-bold tracking-tight bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
-            LOTU Espacio Digital
-        </a>
-
-        <!-- Navegación Escritorio -->
-        <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
-            <a href="#servicios" class="hover:text-indigo-400 transition-colors">Servicios</a>
-            <a href="#microapps" class="hover:text-indigo-400 transition-colors">Micro Apps</a>
-            <a href="#about" class="hover:text-indigo-400 transition-colors">Sobre Mí</a>
-            <a href="#contacto" class="px-4 py-2 rounded-full bg-indigo-600 text-white hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-500/20">Contacto</a>
-        </nav>
-
-        <!-- Botón Menú Hamburguesa (Solo Celulares) -->
-        <button id="mobileMenuBtn" aria-label="Abrir menú" class="md:hidden p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:bg-slate-800 focus:outline-none transition-all z-50">
-            <svg id="menuIcon" class="w-6 h-6 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
-            <svg id="closeIcon" class="w-6 h-6 hidden transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-        </button>
-    </div>
-
-    <!-- Fondo Oscuro Translúcido (Backdrop) -->
-    <div id="menuOverlay" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-500 z-40"></div>
-
-    <!-- Panel Desplegable Lateral con Efecto "Página de Papel" -->
-    <div id="mobileMenu" 
-         class="fixed top-0 right-0 h-[100dvh] w-4/5 max-w-sm bg-slate-900/95 border-l border-indigo-500/30 p-6 sm:p-8 shadow-2xl z-40 flex flex-col justify-between transition-all duration-500 ease-out pointer-events-none overflow-y-auto"
-         style="transform-origin: right center; transform: perspective(1200px) rotateY(-85deg) translateX(100%); opacity: 0;">
-        
-        <!-- Contenido del Menú -->
-        <div class="pt-16 space-y-6">
-            <span class="text-xs font-semibold tracking-wider text-indigo-400 uppercase bg-indigo-950/60 px-3 py-1 rounded-full border border-indigo-800/50">
-                Navegación
-            </span>
-            <nav class="space-y-3 pt-2">
-                <a href="#servicios" class="mobile-link block text-lg font-semibold text-slate-200 hover:text-indigo-400 transition-colors border-b border-slate-800/80 pb-3">
-                    Servicios
-                </a>
-                <a href="#microapps" class="mobile-link block text-lg font-semibold text-slate-200 hover:text-indigo-400 transition-colors border-b border-slate-800/80 pb-3">
-                    Micro Apps
-                </a>
-                <a href="#about" class="mobile-link block text-lg font-semibold text-slate-200 hover:text-indigo-400 transition-colors border-b border-slate-800/80 pb-3">
-                    Sobre Mí
-                </a>
-            </nav>
-        </div>
-
-        <!-- Botón de Acción / Contacto al Pie del Menú (Adaptado a Mobile) -->
-        <div class="pt-6 pb-6">
-            <a href="https://wa.me/" target="_blank" class="mobile-link flex items-center justify-center gap-2 w-full text-center py-3.5 px-4 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-500 text-white font-semibold shadow-lg shadow-emerald-600/20 hover:opacity-95 transition-all text-sm">
-                <span>💬</span> Contactar por WhatsApp
-            </a>
-        </div>
-    </div>
-</header>
-
-<!-- Script para la animación 3D "Página de Papel" -->
-<script>
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const menuOverlay = document.getElementById('menuOverlay');
-    const menuIcon = document.getElementById('menuIcon');
-    const closeIcon = document.getElementById('closeIcon');
-    const mobileLinks = document.querySelectorAll('.mobile-link');
-
-    let isOpen = false;
-
-    function toggleMenu() {
-        isOpen = !isOpen;
-
-        if (isOpen) {
-            mobileMenu.style.transform = 'perspective(1200px) rotateY(0deg) translateX(0%)';
-            mobileMenu.style.opacity = '1';
-            mobileMenu.classList.remove('pointer-events-none');
-            
-            menuOverlay.classList.remove('opacity-0', 'pointer-events-none');
-            menuOverlay.classList.add('opacity-100');
-
-            menuIcon.classList.add('hidden');
-            closeIcon.classList.remove('hidden');
-        } else {
-            mobileMenu.style.transform = 'perspective(1200px) rotateY(-85deg) translateX(100%)';
-            mobileMenu.style.opacity = '0';
-            mobileMenu.classList.add('pointer-events-none');
-
-            menuOverlay.classList.add('opacity-0', 'pointer-events-none');
-            menuOverlay.classList.remove('opacity-100');
-
-            menuIcon.classList.remove('hidden');
-            closeIcon.classList.add('hidden');
-        }
-    }
-
-    mobileMenuBtn.addEventListener('click', toggleMenu);
-    menuOverlay.addEventListener('click', toggleMenu);
-
-    mobileLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (isOpen) toggleMenu();
-        });
-    });
-</script>
-<!-- CARRUSEL DE IMPACTO OPTIMIZADO PARA MÓVIL -->
-<section class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 pt-6 pb-12 overflow-hidden">
-    <div id="carousel" class="relative w-full rounded-3xl overflow-hidden border border-slate-800 shadow-2xl bg-slate-900">
-        
-        <!-- Slides Container -->
-        <div id="slides" class="flex transition-transform duration-500 ease-out w-full">
-            
-            <!-- Slide 1: Creación de Tiendas -->
-            <div class="min-w-full w-full relative p-6 sm:p-10 md:p-14 bg-gradient-to-r from-indigo-950/90 via-slate-900 to-slate-950 flex flex-col justify-center box-border">
-                <div class="max-w-2xl relative z-10">
-                    <span class="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-indigo-400 uppercase bg-indigo-950/60 rounded-full border border-indigo-800/50">
-                        Diseño & Desarrollo Web
-                    </span>
-                    <h2 class="text-xl sm:text-2xl md:text-4xl font-extrabold text-white mb-4 leading-tight">
-                        Tu tienda online lista para vender en la plataforma ideal
-                    </h2>
-                    <p class="text-slate-300 text-sm md:text-base mb-6">
-                        Desarrollo a medida en Tiendanube, Shopify, PrestaShop, Empretienda o Tienda Negocio. Nos adaptamos a la escala y presupuesto de tu negocio.
-                    </p>
-                    <a href="#contacto" class="inline-block px-6 py-3 rounded-xl bg-indigo-600 text-white font-semibold text-sm hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-600/30">
-                        Crear mi Tienda
-                    </a>
-                </div>
-            </div>
-
-            <!-- Slide 2: Mantenimiento & SEO Mensual -->
-            <div class="min-w-full w-full relative p-6 sm:p-10 md:p-14 bg-gradient-to-r from-emerald-950/80 via-slate-900 to-slate-950 flex flex-col justify-center box-border">
-                <div class="max-w-2xl relative z-10">
-                    <span class="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-emerald-400 uppercase bg-emerald-950/60 rounded-full border border-emerald-800/50">
-                        Gestión & Mantenimiento Mensual
-                    </span>
-                    <h2 class="text-xl sm:text-2xl md:text-4xl font-extrabold text-white mb-4 leading-tight">
-                        Optimizá y mantené tu e-commerce al día sin perder tiempo
-                    </h2>
-                    <p class="text-slate-300 text-sm md:text-base mb-6">
-                        Carga masiva de productos, posicionamiento SEO comercial, actualización de promociones y soporte continuo para marcas en crecimiento.
-                    </p>
-                    <a href="#contacto" class="inline-block px-6 py-3 rounded-xl bg-emerald-600 text-white font-semibold text-sm hover:bg-emerald-500 transition-all shadow-lg shadow-emerald-600/30">
-                        Ver Servicios Mensuales
-                    </a>
-                </div>
-            </div>
-
-            <!-- Slide 3: Micro Apps & Automatización -->
-            <div class="min-w-full w-full relative p-6 sm:p-10 md:p-14 bg-gradient-to-r from-cyan-950/80 via-slate-900 to-slate-950 flex flex-col justify-center box-border">
-                <div class="max-w-2xl relative z-10">
-                    <span class="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-cyan-400 uppercase bg-cyan-950/60 rounded-full border border-cyan-800/50">
-                        Soluciones Tecnológicas
-                    </span>
-                    <h2 class="text-xl sm:text-2xl md:text-4xl font-extrabold text-white mb-4 leading-tight">
-                        Micro-Apps interactivas para potenciar tus operaciones
-                    </h2>
-                    <p class="text-slate-300 text-sm md:text-base mb-6">
-                        Herramientas a medida como agendas de turnos, calculadoras y gestores integrados a bases de datos seguras en la nube.
-                    </p>
-                    <a href="#microapps" class="inline-block px-6 py-3 rounded-xl bg-cyan-600 text-white font-semibold text-sm hover:bg-cyan-500 transition-all shadow-lg shadow-cyan-600/30">
-                        Explorar Apps
-                    </a>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Botones de Navegación (Escritorio) -->
-        <button id="prevBtn" class="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-900/80 border border-slate-700 text-white items-center justify-center hover:bg-slate-800 transition-colors z-20">
-            ❮
-        </button>
-        <button id="nextBtn" class="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-900/80 border border-slate-700 text-white items-center justify-center hover:bg-slate-800 transition-colors z-20">
-            ❯
-        </button>
-
-        <!-- Indicadores (Puntos) -->
-        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-20">
-            <button class="dot w-3 h-3 rounded-full bg-white transition-all" onclick="goToSlide(0)"></button>
-            <button class="dot w-3 h-3 rounded-full bg-white/40 transition-all" onclick="goToSlide(1)"></button>
-            <button class="dot w-3 h-3 rounded-full bg-white/40 transition-all" onclick="goToSlide(2)"></button>
-        </div>
-    </div>
-</section>
-
-<!-- SCRIPT TÁCTIL SEGURO -->
-<script>
-    let currentSlide = 0;
-    const slides = document.getElementById('slides');
-    const dots = document.querySelectorAll('.dot');
-    const carousel = document.getElementById('carousel');
-    const totalSlides = 3;
-
-    function updateCarousel() {
-        slides.style.transform = `translateX(-${currentSlide * 100}%)`;
-        dots.forEach((dot, index) => {
-            if (index === currentSlide) {
-                dot.classList.add('bg-white');
-                dot.classList.remove('bg-white/40');
-            } else {
-                dot.classList.remove('bg-white');
-                dot.classList.add('bg-white/40');
-            }
-        });
-    }
-
-    function goToSlide(index) {
-        currentSlide = index;
-        updateCarousel();
-    }
-
-    if(document.getElementById('nextBtn')) {
-        document.getElementById('nextBtn').addEventListener('click', () => {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            updateCarousel();
-        });
-    }
-
-    if(document.getElementById('prevBtn')) {
-        document.getElementById('prevBtn').addEventListener('click', () => {
-            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-            updateCarousel();
-        });
-    }
-
-    // Gestos táctiles precisos
-    let touchStartX = 0;
-    let touchStartY = 0;
-    let touchEndX = 0;
-
-    carousel.addEventListener('touchstart', e => {
-        touchStartX = e.changedTouches[0].screenX;
-        touchStartY = e.changedTouches[0].screenY;
-    }, { passive: true });
-
-    carousel.addEventListener('touchend', e => {
-        touchEndX = e.changedTouches[0].screenX;
-        let touchEndY = e.changedTouches[0].screenY;
-        
-        // Validar que el movimiento haya sido mayormente horizontal y no vertical (para no trabar el scroll)
-        let diffX = touchStartX - touchEndX;
-        let diffY = Math.abs(touchStartY - touchEndY);
-
-        if (Math.abs(diffX) > 40 && diffY < 50) {
-            if (diffX > 0) {
-                currentSlide = (currentSlide + 1) % totalSlides;
-            } else {
-                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-            }
-            updateCarousel();
-        }
-    }, { passive: true });
-
-    setInterval(() => {
-        currentSlide = (currentSlide + 1) % totalSlides;
-        updateCarousel();
-    }, 6000);
-</script>
-<!-- SECCIÓN: MANTENIMIENTO MENSUAL & SEO E-COMMERCE -->
-<section id="servicios" class="py-20 relative max-w-7xl mx-auto px-6">
-    <!-- Encabezado de Sección -->
-    <div class="text-center max-w-3xl mx-auto mb-16">
-        <span class="px-4 py-1.5 text-xs font-semibold tracking-wider text-emerald-400 uppercase bg-emerald-950/60 rounded-full border border-emerald-800/50">
-            Ingresos Recurrentes & Crecimiento Continuo
-        </span>
-        <h2 class="text-3xl md:text-5xl font-extrabold text-white mt-4 mb-6 leading-tight">
-            Gestión y Mantenimiento Mensual para tu E-Commerce
-        </h2>
-        <p class="text-slate-400 text-base md:text-lg">
-            Liberate del trabajo operativo. Nos ocupamos de mantener tu catálogo al día, optimizar tu posicionamiento en Google y asegurar que tu tienda responda a las ventas.
-        </p>
-    </div>
-
-    <!-- Grilla de Pilares Estratégicos -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-        
-        <!-- Pilar 1: Gestión de Catálogo -->
-        <div class="p-8 rounded-3xl bg-slate-900/60 border border-slate-800 hover:border-emerald-500/40 transition-all duration-300 group">
-            <div class="w-14 h-14 rounded-2xl bg-emerald-950/80 border border-emerald-800/50 flex items-center justify-center text-emerald-400 mb-6 text-2xl group-hover:scale-110 transition-transform">
-                📦
-            </div>
-            <h3 class="text-xl font-bold text-white mb-3">Gestión de Catálogo & Stock</h3>
-            <p class="text-slate-400 text-sm leading-relaxed mb-4">
-                Carga masiva y manual de productos, actualización de precios, variantes (talles/colores), control de inventario y configuración de promociones semanales.
-            </p>
-            <ul class="text-xs text-slate-300 space-y-2">
-                <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Carga de fotos y atributos</li>
-                <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Categorización inteligente</li>
-                <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Ofertas y banners rotativos</li>
-            </ul>
-        </div>
-
-        <!-- Pilar 2: SEO Comercial -->
-        <div class="p-8 rounded-3xl bg-slate-900/60 border border-slate-800 hover:border-indigo-500/40 transition-all duration-300 group">
-            <div class="w-14 h-14 rounded-2xl bg-indigo-950/80 border border-indigo-800/50 flex items-center justify-center text-indigo-400 mb-6 text-2xl group-hover:scale-110 transition-transform">
-                🔍
-            </div>
-            <h3 class="text-xl font-bold text-white mb-3">Posicionamiento SEO E-Commerce</h3>
-            <p class="text-slate-400 text-sm leading-relaxed mb-4">
-                Optimizamos títulos, descripciones persuasivas y meta-etiquetas de tus fichas de producto para que tu tienda aparezca de forma orgánica en las búsquedas de Google.
-            </p>
-            <ul class="text-xs text-slate-300 space-y-2">
-                <li class="flex items-center gap-2"><span class="text-indigo-400">✓</span> Investigación de palabras clave</li>
-                <li class="flex items-center gap-2"><span class="text-indigo-400">✓</span> Redacción SEO para fichas</li>
-                <li class="flex items-center gap-2"><span class="text-indigo-400">✓</span> Optimización de imágenes (Alt Text)</li>
-            </ul>
-        </div>
-
-        <!-- Pilar 3: Soporte & Micro-Apps -->
-        <div class="p-8 rounded-3xl bg-slate-900/60 border border-slate-800 hover:border-cyan-500/40 transition-all duration-300 group">
-            <div class="w-14 h-14 rounded-2xl bg-cyan-950/80 border border-cyan-800/50 flex items-center justify-center text-cyan-400 mb-6 text-2xl group-hover:scale-110 transition-transform">
-                ⚙️
-            </div>
-            <h3 class="text-xl font-bold text-white mb-3">Soporte Operativo & Apps</h3>
-            <p class="text-slate-400 text-sm leading-relaxed mb-4">
-                Resolución de dudas técnicas, integración de pasarelas de pago y envíos, más la implementación de micro-apps personalizadas para automatizar tu negocio.
-            </p>
-            <ul class="text-xs text-slate-300 space-y-2">
-                <li class="flex items-center gap-2"><span class="text-cyan-400">✓</span> Integración de MP y couriers</li>
-                <li class="flex items-center gap-2"><span class="text-cyan-400">✓</span> Micro-apps a medida</li>
-                <li class="flex items-center gap-2"><span class="text-cyan-400">✓</span> Asistencia por WhatsApp</li>
-            </ul>
-        </div>
-
-    </div>
-</section>
-  <!-- SECCIÓN: PLANES & TARIFAS A MEDIDA -->
-<section id="planes" class="py-24 relative max-w-7xl mx-auto px-6 overflow-hidden">
+    <title>LOTU Espacio Digital | E-Commerce & SEO Commercial</title>
     
-    <!-- Luces de Fondo (Efecto Futurista) -->
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none"></div>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Ocultar barra de desplazamiento en carrusel */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased selection:bg-indigo-500 selection:text-white">
 
-    <!-- Introducción Estética de la Sección -->
-    <div class="text-center max-w-3xl mx-auto mb-16 relative z-10">
-        <span class="inline-block px-4 py-1.5 mb-4 text-xs font-semibold tracking-widest text-cyan-400 uppercase bg-cyan-950/60 rounded-full border border-cyan-800/50 shadow-sm shadow-cyan-500/20">
-            Escalabilidad & Mantenimiento
-        </span>
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
-            Planes de Mantenimiento <br class="hidden sm:inline" />
-            <span class="bg-gradient-to-r from-indigo-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">
-                Diseñados a tu Medida
-            </span>
-        </h2>
-        <p class="text-slate-400 text-sm md:text-base mt-4 leading-relaxed">
-            Elegí la cobertura ideal para liberar tu tiempo operativo. Mantené tu tienda optimizada, al día y posicionada en los buscadores.
-        </p>
-    </div>
-
-    <!-- Grilla de Tarjetas Futuristas (3 Columnas) -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch relative z-10">
-        
-        <!-- PLAN 1: EMPRENDEDOR -->
-        <div class="group relative rounded-3xl p-8 bg-slate-900/70 border border-slate-800 backdrop-blur-xl flex flex-col justify-between transition-all duration-300 ease-out hover:scale-105 hover:border-slate-700 hover:shadow-2xl hover:shadow-indigo-500/10 active:scale-95 cursor-pointer">
+    <!-- ==========================================
+         1. HEADER & NAVEGACIÓN 3D RESPONSIVE
+         ========================================== -->
+    <header class="fixed top-0 left-0 right-0 z-50 px-4 py-4 backdrop-blur-md bg-slate-950/70 border-b border-slate-800/60 transition-all">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
             
-            <div>
-                <!-- Header de la Tarjeta -->
-                <div class="flex items-center justify-between mb-4">
-                    <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Paso Inicial</span>
-                    <span class="w-2 h-2 rounded-full bg-slate-500 group-hover:bg-indigo-400 transition-colors"></span>
-                </div>
-                <h3 class="text-2xl font-extrabold text-white mb-2">Plan Emprendedor</h3>
-                <p class="text-slate-400 text-xs leading-relaxed mb-6">
-                    Perfecto para marcas que buscan mantener su catálogo ordenado y actualizar ofertas sin complicaciones.
+            <!-- Logo Marca -->
+            <a href="#" class="text-xl font-extrabold text-white tracking-tight flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-indigo-500 animate-pulse shadow-lg shadow-indigo-500/50"></span>
+                LOTU <span class="text-slate-400 font-normal">Espacio Digital</span>
+            </a>
+
+            <!-- Menú Escritorio -->
+            <nav class="hidden md:flex items-center gap-8 text-xs font-semibold tracking-wider uppercase text-slate-300">
+                <a href="#carousel" class="hover:text-cyan-400 transition-colors">Inicio</a>
+                <a href="#desarrollo" class="hover:text-cyan-400 transition-colors">Creación</a>
+                <a href="#servicios" class="hover:text-cyan-400 transition-colors">Mantenimiento</a>
+                <a href="#planes" class="hover:text-cyan-400 transition-colors">Planes</a>
+                <a href="#contacto" class="hover:text-cyan-400 transition-colors">Contacto</a>
+            </nav>
+
+            <!-- CTA Menú -->
+            <a href="https://wa.me/5491170597547?text=Hola!%20Quiero%20consultar%20por%20sus%20servicios%20de%20e-commerce" 
+               target="_blank" 
+               class="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 text-white font-semibold text-xs tracking-wider uppercase shadow-md shadow-indigo-600/20 hover:from-indigo-500 hover:to-cyan-500 transition-all">
+                <span>Escribinos</span>
+                <span>→</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Espaciador para Header Fijo -->
+    <div class="h-20"></div>
+
+    <!-- ==========================================
+         2. HERO CARRUSEL TÁCTIL (SWIPE & INTERACTIVO)
+         ========================================== -->
+    <section id="carousel" class="relative max-w-7xl mx-auto px-6 py-8 overflow-hidden">
+        <div class="relative rounded-3xl border border-slate-800 bg-slate-900/60 backdrop-blur-xl p-8 md:p-14 overflow-hidden shadow-2xl">
+            <!-- Luces Ambientales -->
+            <div class="absolute -top-24 -left-24 w-72 h-72 bg-indigo-600/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-24 -right-24 w-72 h-72 bg-cyan-600/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-3xl relative z-10">
+                <span class="inline-block px-4 py-1.5 mb-4 text-xs font-semibold tracking-widest text-cyan-400 uppercase bg-cyan-950/60 rounded-full border border-cyan-800/50 shadow-sm">
+                    E-Commerce Strategists
+                </span>
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-tight mb-6">
+                    Transformamos tu tienda online en un <br class="hidden sm:inline" />
+                    <span class="bg-gradient-to-r from-indigo-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">
+                        Activo Digital Escalable
+                    </span>
+                </h1>
+                <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-8">
+                    Desarrollo web a medida, mantenimiento operativo continuo y optimización SEO comercial. Liberá tu tiempo mientras nos encargamos de mantener tu tienda al día y vendiendo.
                 </p>
 
-                <!-- Detallado del Contenido -->
-                <div class="space-y-3 text-xs text-slate-300 border-t border-slate-800/80 pt-6 mb-8">
-                    <p class="flex items-center gap-2.5">
-                        <span class="w-4 h-4 rounded-full bg-indigo-950 text-indigo-400 flex items-center justify-center font-bold text-[10px]">✓</span>
-                        Hasta 30 productos/mes (carga y edición)
-                    </p>
-                    <p class="flex items-center gap-2.5">
-                        <span class="w-4 h-4 rounded-full bg-indigo-950 text-indigo-400 flex items-center justify-center font-bold text-[10px]">✓</span>
-                        Actualización de banners mensuales
-                    </p>
-                    <p class="flex items-center gap-2.5">
-                        <span class="w-4 h-4 rounded-full bg-indigo-950 text-indigo-400 flex items-center justify-center font-bold text-[10px]">✓</span>
-                        SEO comercial en categorías clave
-                    </p>
-                    <p class="flex items-center gap-2.5">
-                        <span class="w-4 h-4 rounded-full bg-indigo-950 text-indigo-400 flex items-center justify-center font-bold text-[10px]">✓</span>
-                        Soporte técnico por WhatsApp
-                    </p>
-                </div>
-            </div>
-
-            <!-- Call to Action -->
-            <div>
-                <a href="https://wa.me/?text=Hola!%20Me%20interesa%20consultar%20por%20el%20Plan%20Emprendedor%20de%20LOTU%20Espacio%20Digital" 
-                   target="_blank" 
-                   class="flex items-center justify-center gap-2 w-full py-3.5 px-4 rounded-xl border border-slate-700 bg-slate-900/90 text-white font-semibold text-xs tracking-wider uppercase group-hover:bg-indigo-600 group-hover:border-indigo-500 transition-all shadow-md">
-                    <span>Consultar Plan</span>
-                    <span class="text-sm">→</span>
-                </a>
-            </div>
-        </div>
-
-        <!-- PLAN 2: CRECIMIENTO (DESTACADO / FUTURISTA) -->
-        <div class="group relative rounded-3xl p-8 bg-gradient-to-b from-indigo-950/40 via-slate-900/90 to-slate-900 border-2 border-indigo-500/60 backdrop-blur-xl flex flex-col justify-between transition-all duration-300 ease-out hover:scale-105 hover:border-indigo-400 hover:shadow-2xl hover:shadow-indigo-500/25 active:scale-95 cursor-pointer">
-            
-            <!-- Badge Destacado -->
-            <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-indigo-500 to-cyan-500 text-white text-[10px] font-bold tracking-widest uppercase rounded-full shadow-lg shadow-indigo-500/30">
-                Más Popular
-            </div>
-
-            <div>
-                <div class="flex items-center justify-between mb-4 pt-2">
-                    <span class="text-xs font-semibold uppercase tracking-wider text-indigo-400">Escalabilidad</span>
-                    <span class="w-2.5 h-2.5 rounded-full bg-indigo-400 animate-pulse"></span>
-                </div>
-                <h3 class="text-2xl font-extrabold text-white mb-2">Plan Crecimiento</h3>
-                <p class="text-slate-400 text-xs leading-relaxed mb-6">
-                    Diseñado para tiendas activas que buscan posicionar fichas en Google y acelerar sus ventas recurrentes.
-                </p>
-
-                <!-- Detallado del Contenido -->
-                <div class="space-y-3 text-xs text-slate-200 border-t border-slate-800/80 pt-6 mb-8">
-                    <p class="flex items-center gap-2.5">
-                        <span class="w-4 h-4 rounded-full bg-indigo-900/80 text-cyan-400 flex items-center justify-center font-bold text-[10px]">✓</span>
-                        Hasta 100 productos/mes (masivo o manual)
-                    </p>
-                    <p class="flex items-center gap-2.5">
-                        <span class="w-4 h-4 rounded-full bg-indigo-900/80 text-cyan-400 flex items-center justify-center font-bold text-[10px]">✓</span>
-                        SEO Avanzado (Títulos, descripciones y alt-text)
-                    </p>
-                    <p class="flex items-center gap-2.5">
-                        <span class="w-4 h-4 rounded-full bg-indigo-900/80 text-cyan-400 flex items-center justify-center font-bold text-[10px]">✓</span>
-                        Actualización semanal de banners y promos
-                    </p>
-                    <p class="flex items-center gap-2.5">
-                        <span class="w-4 h-4 rounded-full bg-indigo-900/80 text-cyan-400 flex items-center justify-center font-bold text-[10px]">✓</span>
-                        Auditoría técnica de velocidad web
-                    </p>
-                    <p class="flex items-center gap-2.5">
-                        <span class="w-4 h-4 rounded-full bg-indigo-900/80 text-cyan-400 flex items-center justify-center font-bold text-[10px]">✓</span>
-                        Soporte prioritario 1 a 1 por WhatsApp
-                    </p>
-                </div>
-            </div>
-
-            <!-- Call to Action -->
-            <div>
-                <a href="https://wa.me/?text=Hola!%20Quiero%20solicitar%20el%20Plan%20Crecimiento%20de%20LOTU%20Espacio%20Digital" 
-                   target="_blank" 
-                   class="flex items-center justify-center gap-2 w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 text-white font-semibold text-xs tracking-wider uppercase shadow-lg shadow-indigo-600/30 group-hover:from-indigo-500 group-hover:to-cyan-500 transition-all">
-                    <span>Solicitar Cotización</span>
-                    <span class="text-sm">🚀</span>
-                </a>
-            </div>
-        </div>
-
-        <!-- PLAN 3: CUSTOM / PARTNER -->
-        <div class="group relative rounded-3xl p-8 bg-slate-900/70 border border-slate-800 backdrop-blur-xl flex flex-col justify-between transition-all duration-300 ease-out hover:scale-105 hover:border-cyan-500/50 hover:shadow-2xl hover:shadow-cyan-500/10 active:scale-95 cursor-pointer">
-            
-            <div>
-                <div class="flex items-center justify-between mb-4">
-                    <span class="text-xs font-semibold uppercase tracking-wider text-cyan-400">Solución Full</span>
-                    <span class="w-2 h-2 rounded-full bg-slate-500 group-hover:bg-cyan-400 transition-colors"></span>
-                </div>
-                <h3 class="text-2xl font-extrabold text-white mb-2">Partner E-Commerce</h3>
-                <p class="text-slate-400 text-xs leading-relaxed mb-6">
-                    Tu equipo de tecnología externo. Incluye desarrollo continuo, micro-apps a medida y estrategia de conversión.
-                </p>
-
-                <!-- Detallado del Contenido -->
-                <div class="space-y-3 text-xs text-slate-300 border-t border-slate-800/80 pt-6 mb-8">
-                    <p class="flex items-center gap-2.5">
-                        <span class="w-4 h-4 rounded-full bg-cyan-950 text-cyan-400 flex items-center justify-center font-bold text-[10px]">✓</span>
-                        Carga y actualización ilimitada de catálogo
-                    </p>
-                    <p class="flex items-center gap-2.5">
-                        <span class="w-4 h-4 rounded-full bg-cyan-950 text-cyan-400 flex items-center justify-center font-bold text-[10px]">✓</span>
-                        Estrategia SEO integral y posicionamiento
-                    </p>
-                    <p class="flex items-center gap-2.5">
-                        <span class="w-4 h-4 rounded-full bg-cyan-950 text-cyan-400 flex items-center justify-center font-bold text-[10px]">✓</span>
-                        Integración de Micro-Apps (turnos, calculadoras)
-                    </p>
-                    <p class="flex items-center gap-2.5">
-                        <span class="w-4 h-4 rounded-full bg-cyan-950 text-cyan-400 flex items-center justify-center font-bold text-[10px]">✓</span>
-                        Asesoría mensual en optimización de ventas (CRO)
-                    </p>
-                </div>
-            </div>
-
-            <!-- Call to Action -->
-            <div>
-                <a href="https://wa.me/?text=Hola!%20Me%20gustaria%20armar%20un%20Plan%20Partner%20a%20medida%20con%20LOTU%20Espacio%20Digital" 
-                   target="_blank" 
-                   class="flex items-center justify-center gap-2 w-full py-3.5 px-4 rounded-xl border border-slate-700 bg-slate-900/90 text-white font-semibold text-xs tracking-wider uppercase group-hover:bg-cyan-600 group-hover:border-cyan-500 transition-all shadow-md">
-                    <span>Armar Plan a Medida</span>
-                    <span class="text-sm">⚙️</span>
-                </a>
-            </div>
-        </div>
-
-    </div>
-</section> 
-    <!-- 2. Sección Principal (Hero) -->
-    <section class="relative overflow-hidden py-24 md:py-32 border-b border-slate-900">
-        <div class="absolute inset-0 bg-[linear-gradient(to_right,#1e293b15_1px,transparent_1px),linear-gradient(to_bottom,#1e293b15_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
-        <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
-            <span class="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-wider text-indigo-400 uppercase bg-indigo-950/50 rounded-full border border-indigo-800/50">
-                Consultoría, Estrategia & E-Commerce
-            </span>
-            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight">
-                Impulsamos tu ecosistema digital hacia el <span class="bg-gradient-to-r from-indigo-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">próximo nivel</span>
-            </h1>
-            <p class="text-lg md:text-xl text-slate-400 mb-10 max-w-2xl mx-auto">
-                Gestión de E-commerce, optimización de canales de venta online y herramientas interactivas a medida para potenciar negocios digitales.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#microapps" class="px-8 py-4 rounded-xl bg-indigo-600 font-semibold text-white hover:bg-indigo-500 transition-all shadow-xl shadow-indigo-600/30">
-                    Explorar Micro Apps
-                </a>
-                <a href="#contacto" class="px-8 py-4 rounded-xl bg-slate-900 font-semibold text-slate-300 hover:bg-slate-800 border border-slate-800 transition-all">
-                    Agendar Consultoría
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. Ecosistema de Micro Apps -->
-    <section id="microapps" class="py-24 bg-slate-900/30">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <h2 class="text-3xl font-bold tracking-tight text-white mb-4">Ecosistema de Micro Apps</h2>
-                <p class="text-slate-400">Herramientas digitales eficientes y conectadas en tiempo real para optimizar procesos comerciales.</p>
-            </div>
-            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <!-- App 1: Turnos (Con enlace listo para cuando crees turnos.html) -->
-                <div class="p-8 rounded-2xl bg-slate-900 border border-slate-800 hover:border-indigo-500/50 transition-all group">
-                    <div class="w-12 h-12 rounded-lg bg-indigo-600/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 font-bold text-xl mb-6 group-hover:scale-110 transition-transform">
-                        📅
-                    </div>
-                    <h3 class="text-xl font-semibold text-white mb-3">Agenda de Turnos Online</h3>
-                    <p class="text-slate-400 text-sm mb-6">Sistema integral de gestión y reservas de citas sincronizado con bases de datos seguras.</p>
-                    <a href="turnos.html" class="inline-flex items-center text-sm font-semibold text-indigo-400 hover:text-indigo-300 transition-colors">
-                        Acceder a la App &rarr;
+                <div class="flex flex-wrap gap-4">
+                    <a href="#planes" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 text-white font-semibold text-xs tracking-wider uppercase shadow-lg shadow-indigo-600/30 hover:opacity-90 transition-all">
+                        Ver Planes Mensuales
+                    </a>
+                    <a href="https://wa.me/5491170597547?text=Hola!%20Quiero%20asesoramiento%20para%20mi%20tienda%20online" target="_blank" class="px-6 py-3.5 rounded-xl border border-slate-700 bg-slate-900/80 text-slate-200 font-semibold text-xs tracking-wider uppercase hover:border-slate-500 transition-all">
+                        Consultar por WhatsApp
                     </a>
                 </div>
-                <!-- App 2: Próxima App -->
-                <div class="p-8 rounded-2xl bg-slate-900 border border-slate-800 hover:border-cyan-500/50 transition-all group">
-                    <div class="w-12 h-12 rounded-lg bg-cyan-600/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 font-bold text-xl mb-6 group-hover:scale-110 transition-transform">
-                        ⚡
-                    </div>
-                    <h3 class="text-xl font-semibold text-white mb-3">Próxima Herramienta E-Commerce</h3>
-                    <p class="text-slate-400 text-sm mb-6">Nueva solución modular en desarrollo orientada a la automatización de procesos digitales.</p>
-                    <span class="text-xs px-3 py-1 rounded-full bg-slate-800 text-slate-400 font-medium">En desarrollo</span>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- 4. Servicios de Consultoría -->
-    <section id="servicios" class="py-24 border-t border-slate-900">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <h2 class="text-3xl font-bold tracking-tight text-white mb-4">Servicios Profesionales</h2>
-                <p class="text-slate-400">Estrategias especializadas para potenciar tu presencia y rentabilidad en entornos digitales.</p>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="p-6 rounded-xl bg-slate-900/50 border border-slate-800/80">
-                    <h3 class="text-lg font-semibold text-white mb-2">Estrategia E-Commerce</h3>
-                    <p class="text-sm text-slate-400">Diagnóstico, planificación y optimización integral de canales de venta online orientados a la conversión.</p>
+    <!-- ==========================================
+         3. PILAR 01: CREACIÓN DE TIENDAS ONLINE
+         ========================================== -->
+    <section id="desarrollo" class="py-16 relative max-w-7xl mx-auto px-6">
+        <div class="bg-gradient-to-r from-slate-900 via-indigo-950/30 to-slate-900 border border-slate-800 rounded-3xl p-8 md:p-14 relative overflow-hidden shadow-2xl">
+            <div class="max-w-3xl relative z-10">
+                <span class="inline-block px-4 py-1.5 mb-4 text-xs font-semibold tracking-wider text-indigo-400 uppercase bg-indigo-950/80 rounded-full border border-indigo-800/60">
+                    Pilar 01 · Infraestructura Digital
+                </span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight">
+                    Creación y Configuración de Tiendas Online
+                </h2>
+                <p class="text-slate-300 text-sm md:text-base mb-8 leading-relaxed">
+                    Diseñamos y estructuramos tu e-commerce desde cero en la plataforma que mejor se adapte a tu marca y presupuesto. Entregamos plataformas funcionales, pensadas para la conversión y 100% optimizadas para dispositivos móviles.
+                </p>
+                
+                <!-- Tags de Plataformas Integradas -->
+                <div class="flex flex-wrap gap-3 mb-8">
+                    <span class="px-3.5 py-1.5 bg-slate-900/90 border border-slate-700/80 rounded-xl text-xs font-medium text-slate-300">Tiendanube</span>
+                    <span class="px-3.5 py-1.5 bg-slate-900/90 border border-slate-700/80 rounded-xl text-xs font-medium text-slate-300">Shopify</span>
+                    <span class="px-3.5 py-1.5 bg-slate-900/90 border border-slate-700/80 rounded-xl text-xs font-medium text-slate-300">Empretienda</span>
+                    <span class="px-3.5 py-1.5 bg-slate-900/90 border border-slate-700/80 rounded-xl text-xs font-medium text-slate-300">WooCommerce</span>
                 </div>
-                <div class="p-6 rounded-xl bg-slate-900/50 border border-slate-800/80">
-                    <h3 class="text-lg font-semibold text-white mb-2">Arquitectura Web Modular</h3>
-                    <p class="text-sm text-slate-400">Desarrollo de ecosistemas digitales seguros, rápidos y de bajo costo operativo utilizando infraestructura cloud moderna.</p>
-                </div>
-                <div class="p-6 rounded-xl bg-slate-900/50 border border-slate-800/80">
-                    <h3 class="text-lg font-semibold text-white mb-2">Optimización y Procesos</h3>
-                    <p class="text-sm text-slate-400">Automatización de tareas operativas y gestión eficiente de bases de datos para escalar tu negocio.</p>
-                </div>
+
+                <a href="https://wa.me/5491170597547?text=Hola!%20Quiero%20cotizar%20el%20desarrollo%20de%20mi%20tienda%20online%20con%20LOTU" 
+                   target="_blank" 
+                   class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-indigo-600 text-white font-semibold text-xs tracking-wider uppercase hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-600/30">
+                    <span>Cotizar Proyecto a Medida</span>
+                    <span>→</span>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- 5. Sobre Mí -->
-    <section id="about" class="py-24 bg-slate-900/30 border-t border-slate-900">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold tracking-tight text-white mb-6">Sobre Mí</h2>
-            <p class="text-slate-300 text-lg leading-relaxed mb-6">
-                Como profesional especializada en Comercio Electrónico, diseño soluciones digitales robustas que combinan una experiencia de usuario impecable con una infraestructura técnica segura, ágil y eficiente.
+    <!-- ==========================================
+         4. PILAR 02: MANTENIMIENTO MENSUAL & SEO
+         ========================================== -->
+    <section id="servicios" class="py-16 relative max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="inline-block px-4 py-1.5 mb-4 text-xs font-semibold tracking-wider text-emerald-400 uppercase bg-emerald-950/60 rounded-full border border-emerald-800/50">
+                Pilar 02 · Gestión & Crecimiento Recurrente
+            </span>
+            <h2 class="text-3xl md:text-5xl font-extrabold text-white leading-tight">
+                Mantenimiento Operativo y Posicionamiento SEO
+            </h2>
+            <p class="text-slate-400 text-sm md:text-base mt-4">
+                Liberate de la carga operativa. Nos encargamos de que tu catálogo se mantenga al día y tu tienda aparezca en los motores de búsqueda.
             </p>
-            <div class="text-sm text-indigo-400 font-medium">
-                Licenciada en eCommerce
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="p-8 rounded-3xl bg-slate-900/70 border border-slate-800 hover:border-emerald-500/40 transition-all">
+                <div class="w-12 h-12 rounded-2xl bg-emerald-950/80 border border-emerald-800/50 flex items-center justify-center text-emerald-400 mb-6 text-xl">📦</div>
+                <h3 class="text-lg font-bold text-white mb-2">Carga & Control de Catálogo</h3>
+                <p class="text-slate-400 text-xs leading-relaxed">Subida masiva y manual de productos, gestión de stock, variantes de talles/colores y actualización constante de precios.</p>
+            </div>
+
+            <div class="p-8 rounded-3xl bg-slate-900/70 border border-slate-800 hover:border-indigo-500/40 transition-all">
+                <div class="w-12 h-12 rounded-2xl bg-indigo-950/80 border border-indigo-800/50 flex items-center justify-center text-indigo-400 mb-6 text-xl">🔍</div>
+                <h3 class="text-lg font-bold text-white mb-2">SEO Comercial E-Commerce</h3>
+                <p class="text-slate-400 text-xs leading-relaxed">Optimización de fichas de producto, títulos, descripciones comerciales y etiquetas ALT para posicionar en Google.</p>
+            </div>
+
+            <div class="p-8 rounded-3xl bg-slate-900/70 border border-slate-800 hover:border-cyan-500/40 transition-all">
+                <div class="w-12 h-12 rounded-2xl bg-cyan-950/80 border border-cyan-800/50 flex items-center justify-center text-cyan-400 mb-6 text-xl">⚙️</div>
+                <h3 class="text-lg font-bold text-white mb-2">Soporte & Micro-Apps</h3>
+                <p class="text-slate-400 text-xs leading-relaxed">Integración de herramientas personalizadas, pasarelas de pago y soporte técnico continuo para mantener la tienda activa.</p>
             </div>
         </div>
     </section>
 
-    <!-- 6. Footer & Contacto -->
-    <footer id="contacto" class="py-16 border-t border-slate-900 bg-slate-950 text-center">
-        <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-2xl font-bold text-white mb-4">¿Charlamos sobre tu próximo proyecto?</h2>
-            <p class="text-slate-400 mb-8 max-w-md mx-auto">Conectemos para llevar tus ideas digitales al siguiente nivel.</p>
-            <a href="https://wa.me/" target="_blank" class="inline-block mb-12 px-8 py-4 rounded-xl bg-emerald-600 font-semibold text-white hover:bg-emerald-500 transition-all shadow-lg shadow-emerald-600/20">
-                Contactar por WhatsApp
-            </a>
-            <div class="text-xs text-slate-600 border-t border-slate-900 pt-8">
-                &copy; 2026 • Lotu espacio digital. Todos los derechos reservados.
+    <!-- ==========================================
+         5. SECCIÓN DE PLANES Y TARIFAS FUTURISTAS
+         ========================================== -->
+    <section id="planes" class="py-24 relative max-w-7xl mx-auto px-6 overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="text-center max-w-3xl mx-auto mb-16 relative z-10">
+            <span class="inline-block px-4 py-1.5 mb-4 text-xs font-semibold tracking-widest text-cyan-400 uppercase bg-cyan-950/60 rounded-full border border-cyan-800/50 shadow-sm shadow-cyan-500/20">
+                Escalabilidad & Cobertura
+            </span>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
+                Planes de Mantenimiento <br class="hidden sm:inline" />
+                <span class="bg-gradient-to-r from-indigo-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">
+                    Diseñados a tu Medida
+                </span>
+            </h2>
+            <p class="text-slate-400 text-sm md:text-base mt-4 leading-relaxed">
+                Elegí la cobertura ideal para delegar la operativa. Mantené tu tienda optimizada, al día y posicionada en los buscadores.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch relative z-10">
+            
+            <!-- PLAN 1: EMPRENDEDOR -->
+            <div class="group relative rounded-3xl p-8 bg-slate-900/70 border border-slate-800 backdrop-blur-xl flex flex-col justify-between transition-all duration-300 ease-out hover:scale-105 hover:border-slate-700 hover:shadow-2xl hover:shadow-indigo-500/10 active:scale-95 cursor-pointer">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Paso Inicial</span>
+                        <span class="w-2 h-2 rounded-full bg-slate-500 group-hover:bg-indigo-400 transition-colors"></span>
+                    </div>
+                    <h3 class="text-2xl font-extrabold text-white mb-2">Plan Emprendedor</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed mb-6">
+                        Perfecto para marcas que buscan mantener su catálogo ordenado y actualizar ofertas sin complicaciones.
+                    </p>
+
+                    <div class="space-y-3 text-xs text-slate-300 border-t border-slate-800/80 pt-6 mb-8">
+                        <p class="flex items-center gap-2.5">
+                            <span class="w-4 h-4 rounded-full bg-indigo-950 text-indigo-400 flex items-center justify-center font-bold text-[10px]">✓</span>
+                            Hasta 30 productos/mes (carga y edición)
+                        </p>
+                        <p class="flex items-center gap-2.5">
+                            <span class="w-4 h-4 rounded-full bg-indigo-950 text-indigo-400 flex items-center justify-center font-bold text-[10px]">✓</span>
+                            Actualización de banners mensuales
+                        </p>
+                        <p class="flex items-center gap-2.5">
+                            <span class="w-4 h-4 rounded-full bg-indigo-950 text-indigo-400 flex items-center justify-center font-bold text-[10px]">✓</span>
+                            SEO comercial en categorías clave
+                        </p>
+                        <p class="flex items-center gap-2.5">
+                            <span class="w-4 h-4 rounded-full bg-indigo-950 text-indigo-400 flex items-center justify-center font-bold text-[10px]">✓</span>
+                            Soporte técnico por WhatsApp
+                        </p>
+                    </div>
+                </div>
+
+                <div>
+                    <a href="https://wa.me/5491170597547?text=Hola!%20Me%20interesa%20consultar%20por%20el%20Plan%20Emprendedor%20de%20LOTU%20Espacio%20Digital" 
+                       target="_blank" 
+                       class="flex items-center justify-center gap-2 w-full py-3.5 px-4 rounded-xl border border-slate-700 bg-slate-900/90 text-white font-semibold text-xs tracking-wider uppercase group-hover:bg-indigo-600 group-hover:border-indigo-500 transition-all shadow-md">
+                        <span>Consultar Plan</span>
+                        <span class="text-sm">→</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- PLAN 2: CRECIMIENTO (DESTACADO) -->
+            <div class="group relative rounded-3xl p-8 bg-gradient-to-b from-indigo-950/40 via-slate-900/90 to-slate-900 border-2 border-indigo-500/60 backdrop-blur-xl flex flex-col justify-between transition-all duration-300 ease-out hover:scale-105 hover:border-indigo-400 hover:shadow-2xl hover:shadow-indigo-500/25 active:scale-95 cursor-pointer">
+                
+                <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-indigo-500 to-cyan-500 text-white text-[10px] font-bold tracking-widest uppercase rounded-full shadow-lg shadow-indigo-500/30">
+                    Más Popular
+                </div>
+
+                <div>
+                    <div class="flex items-center justify-between mb-4 pt-2">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-indigo-400">Escalabilidad</span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-indigo-400 animate-pulse"></span>
+                    </div>
+                    <h3 class="text-2xl font-extrabold text-white mb-2">Plan Crecimiento</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed mb-6">
+                        Diseñado para tiendas activas que buscan posicionar fichas en Google y acelerar sus ventas recurrentes.
+                    </p>
+
+                    <div class="space-y-3 text-xs text-slate-200 border-t border-slate-800/80 pt-6 mb-8">
+                        <p class="flex items-center gap-2.5">
+                            <span class="w-4 h-4 rounded-full bg-indigo-900/80 text-cyan-400 flex items-center justify-center font-bold text-[10px]">✓</span>
+                            Hasta 100 productos/mes (masivo o manual)
+                        </p>
+                        <p class="flex items-center gap-2.5">
+                            <span class="w-4 h-4 rounded-full bg-indigo-900/80 text-cyan-400 flex items-center justify-center font-bold text-[10px]">✓</span>
+                            SEO Avanzado (Títulos, descripciones y alt-text)
+                        </p>
+                        <p class="flex items-center gap-2.5">
+                            <span class="w-4 h-4 rounded-full bg-indigo-900/80 text-cyan-400 flex items-center justify-center font-bold text-[10px]">✓</span>
+                            Actualización semanal de banners y promos
+                        </p>
+                        <p class="flex items-center gap-2.5">
+                            <span class="w-4 h-4 rounded-full bg-indigo-900/80 text-cyan-400 flex items-center justify-center font-bold text-[10px]">✓</span>
+                            Auditoría técnica de velocidad web
+                        </p>
+                        <p class="flex items-center gap-2.5">
+                            <span class="w-4 h-4 rounded-full bg-indigo-900/80 text-cyan-400 flex items-center justify-center font-bold text-[10px]">✓</span>
+                            Soporte prioritario 1 a 1 por WhatsApp
+                        </p>
+                    </div>
+                </div>
+
+                <div>
+                    <a href="https://wa.me/5491170597547?text=Hola!%20Quiero%20solicitar%20el%20Plan%20Crecimiento%20de%20LOTU%20Espacio%20Digital" 
+                       target="_blank" 
+                       class="flex items-center justify-center gap-2 w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 text-white font-semibold text-xs tracking-wider uppercase shadow-lg shadow-indigo-600/30 group-hover:from-indigo-500 group-hover:to-cyan-500 transition-all">
+                        <span>Solicitar Cotización</span>
+                        <span class="text-sm">🚀</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- PLAN 3: PARTNER -->
+            <div class="group relative rounded-3xl p-8 bg-slate-900/70 border border-slate-800 backdrop-blur-xl flex flex-col justify-between transition-all duration-300 ease-out hover:scale-105 hover:border-cyan-500/50 hover:shadow-2xl hover:shadow-cyan-500/10 active:scale-95 cursor-pointer">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-cyan-400">Solución Full</span>
+                        <span class="w-2 h-2 rounded-full bg-slate-500 group-hover:bg-cyan-400 transition-colors"></span>
+                    </div>
+                    <h3 class="text-2xl font-extrabold text-white mb-2">Partner E-Commerce</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed mb-6">
+                        Tu equipo de tecnología externo. Incluye desarrollo continuo, micro-apps a medida y estrategia de conversión.
+                    </p>
+
+                    <div class="space-y-3 text-xs text-slate-300 border-t border-slate-800/80 pt-6 mb-8">
+                        <p class="flex items-center gap-2.5">
+                            <span class="w-4 h-4 rounded-full bg-cyan-950 text-cyan-400 flex items-center justify-center font-bold text-[10px]">✓</span>
+                            Carga y actualización ilimitada de catálogo
+                        </p>
+                        <p class="flex items-center gap-2.5">
+                            <span class="w-4 h-4 rounded-full bg-cyan-950 text-cyan-400 flex items-center justify-center font-bold text-[10px]">✓</span>
+                            Estrategia SEO integral y posicionamiento
+                        </p>
+                        <p class="flex items-center gap-2.5">
+                            <span class="w-4 h-4 rounded-full bg-cyan-950 text-cyan-400 flex items-center justify-center font-bold text-[10px]">✓</span>
+                            Integración de Micro-Apps (turnos, calculadoras)
+                        </p>
+                        <p class="flex items-center gap-2.5">
+                            <span class="w-4 h-4 rounded-full bg-cyan-950 text-cyan-400 flex items-center justify-center font-bold text-[10px]">✓</span>
+                            Asesoría mensual en optimización de ventas (CRO)
+                        </p>
+                    </div>
+                </div>
+
+                <div>
+                    <a href="https://wa.me/5491170597547?text=Hola!%20Me%20gustaria%20armar%20un%20Plan%20Partner%20a%20medida%20con%20LOTU%20Espacio%20Digital" 
+                       target="_blank" 
+                       class="flex items-center justify-center gap-2 w-full py-3.5 px-4 rounded-xl border border-slate-700 bg-slate-900/90 text-white font-semibold text-xs tracking-wider uppercase group-hover:bg-cyan-600 group-hover:border-cyan-500 transition-all shadow-md">
+                        <span>Armar Plan a Medida</span>
+                        <span class="text-sm">⚙️</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==========================================
+         6. CONTACTO & PREGUNTAS FRECUENTES (FAQ)
+         ========================================== -->
+    <section id="contacto" class="py-20 relative max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            
+            <div class="bg-slate-900/80 border border-slate-800 rounded-3xl p-8 md:p-10 backdrop-blur-xl relative overflow-hidden">
+                <div class="absolute -top-12 -right-12 w-40 h-40 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none"></div>
+                
+                <span class="inline-block px-3.5 py-1 mb-4 text-xs font-semibold tracking-wider text-emerald-400 uppercase bg-emerald-950/60 rounded-full border border-emerald-800/50">
+                    Atención Inmediata
+                </span>
+                <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-4">¿Tenés dudas sobre cómo empezar?</h3>
+                <p class="text-slate-400 text-sm mb-8 leading-relaxed">
+                    Escribinos por WhatsApp y analizamos juntos la mejor opción para tu negocio, ya sea la creación de tu tienda o un plan de mantenimiento mensual.
+                </p>
+
+                <div class="space-y-4">
+                    <a href="https://wa.me/5491170597547?text=Hola!%20Quiero%20hacer%20una%20consulta%20para%20mi%20e-commerce%20en%20LOTU%20Espacio%20Digital" 
+                       target="_blank" 
+                       class="flex items-center justify-center gap-3 w-full py-4 px-6 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm tracking-wide transition-all shadow-lg shadow-emerald-600/30">
+                        <span>💬 Chatear por WhatsApp</span>
+                        <span class="text-xs bg-emerald-700/60 px-2 py-0.5 rounded-full">+54 9 11 7059-7547</span>
+                    </a>
+
+                    <a href="https://www.instagram.com/lotu.espaciodigital" 
+                       target="_blank" 
+                       class="flex items-center justify-center gap-3 w-full py-3.5 px-6 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-sm transition-all border border-slate-700">
+                        <span>📷 Seguinos en Instagram (@lotu.espaciodigital)</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="space-y-6">
+                <h3 class="text-xl md:text-2xl font-bold text-white mb-6">Preguntas Frecuentes</h3>
+
+                <div class="p-6 rounded-2xl bg-slate-900/50 border border-slate-800">
+                    <h4 class="text-white text-sm font-semibold mb-2">¿Cómo se gestiona el mantenimiento mensual?</h4>
+                    <p class="text-slate-400 text-xs leading-relaxed">Coordinamos la carga de productos, fotos y promociones mediante planillas compartidas o carpetas en la nube. Vos nos pasás las novedades y nosotras nos encargamos de subirlas y optimizarlas en la tienda.</p>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-slate-900/50 border border-slate-800">
+                    <h4 class="text-white text-sm font-semibold mb-2">¿Trabajan con tiendas de todo el país?</h4>
+                    <p class="text-slate-400 text-xs leading-relaxed">Sí, al ser servicios 100% digitales trabajamos con marcas y emprendimientos de toda la Argentina de forma remota y fluida.</p>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-slate-900/50 border border-slate-800">
+                    <h4 class="text-white text-sm font-semibold mb-2">¿Qué pasa si mi tienda requiere funciones personalizadas?</h4>
+                    <p class="text-slate-400 text-xs leading-relaxed">Desarrollamos e integramos micro-apps a medida (calculadoras, sistemas de reservas o integraciones específicas) adaptadas a la lógica de tu negocio.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==========================================
+         7. FOOTER INSTITUCIONAL
+         ========================================== -->
+    <footer class="bg-slate-950 border-t border-slate-900 pt-16 pb-12 mt-20 relative overflow-hidden text-slate-400 text-sm">
+        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-32 bg-indigo-600/5 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                
+                <div class="md:col-span-2">
+                    <a href="#" class="text-xl font-extrabold text-white tracking-tight flex items-center gap-2 mb-4">
+                        <span class="w-3 h-3 rounded-full bg-indigo-500 animate-pulse"></span>
+                        LOTU <span class="text-slate-400 font-normal">Espacio Digital</span>
+                    </a>
+                    <p class="text-slate-400 text-xs md:text-sm leading-relaxed max-w-sm mb-4">
+                        Soluciones tecnológicas y estratégicas para e-commerce. Desarrollo de tiendas online, optimización SEO comercial y mantenimiento mensual continuo.
+                    </p>
+                    <p class="text-xs text-indigo-400 font-medium">
+                        lotuespaciodigital.com.ar
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-white text-xs font-bold uppercase tracking-wider mb-4">Secciones</h4>
+                    <ul class="space-y-2.5 text-xs">
+                        <li><a href="#carousel" class="hover:text-white transition-colors">Inicio</a></li>
+                        <li><a href="#desarrollo" class="hover:text-white transition-colors">Creación de Tiendas</a></li>
+                        <li><a href="#servicios" class="hover:text-white transition-colors">Mantenimiento & SEO</a></li>
+                        <li><a href="#planes" class="hover:text-white transition-colors">Planes Mensuales</a></li>
+                        <li><a href="#contacto" class="hover:text-white transition-colors">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white text-xs font-bold uppercase tracking-wider mb-4">Canales Oficiales</h4>
+                    <ul class="space-y-3 text-xs mb-6">
+                        <li>
+                            <a href="https://wa.me/5491170597547?text=Hola!%20Quiero%20consultar%20por%20los%20servicios%20de%20LOTU%20Espacio%20Digital" target="_blank" class="hover:text-emerald-400 transition-colors flex items-center gap-2">
+                                <span>💬 WhatsApp: +54 9 11 7059-7547</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:lotu.espaciodigital@gmail.com" class="hover:text-cyan-400 transition-colors flex items-center gap-2">
+                                <span>✉️ Mail: lotu.espaciodigital@gmail.com</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/lotu.espaciodigital" target="_blank" class="hover:text-indigo-400 transition-colors flex items-center gap-2">
+                                <span>📷 Instagram: @lotu.espaciodigital</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="inline-block px-3 py-1 bg-emerald-950/60 border border-emerald-800/40 rounded-full text-[10px] text-emerald-400 font-medium">
+                        ● Canales de atención activos
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="border-t border-slate-900 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+                <p>© 2026 LOTU Espacio Digital. Todos los derechos reservados.</p>
+                <p class="flex items-center gap-1">
+                    Buenos Aires, Argentina 🚀
+                </p>
             </div>
         </div>
     </footer>
