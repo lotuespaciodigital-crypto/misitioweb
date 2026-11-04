@@ -50,12 +50,12 @@
                 <a href="#contacto" class="hover:text-cyan-400 transition-colors">Contacto</a>
             </nav>
 
-            <!-- Botón CTA Escritorio -->
-            <a href="https://wa.me/5491170597547?text=Hola!%20Quiero%20consultar%20por%20sus%20servicios%20de%20e-commerce" 
+            <!-- Botón CTA Escritorio Mejorado -->
+            <a href="https://wa.me/5491170597547?text=Hola!%20Quiero%20cotizar%20un%20proyecto%20con%20LOTU%20Espacio%20Digital" 
                target="_blank" 
                class="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 text-white font-semibold text-xs tracking-wider uppercase shadow-md shadow-indigo-600/20 hover:from-indigo-500 hover:to-cyan-500 transition-all">
-                <span>Escribinos</span>
-                <span>→</span>
+                <span>Cotizar Proyecto</span>
+                <span>🚀</span>
             </a>
 
             <!-- Botón Hamburguesa Mobile -->
@@ -77,11 +77,11 @@
             <a href="#planes" class="mobile-link block text-sm font-semibold text-slate-300 hover:text-cyan-400 py-1.5 border-b border-slate-900">Planes Mensuales</a>
             <a href="#contacto" class="mobile-link block text-sm font-semibold text-slate-300 hover:text-cyan-400 py-1.5 border-b border-slate-900">Contacto</a>
             
-            <a href="https://wa.me/5491170597547?text=Hola!%20Quiero%20consultar%20por%20sus%20servicios%20de%20e-commerce" 
+            <a href="https://wa.me/5491170597547?text=Hola!%20Quiero%20cotizar%20un%20proyecto%20con%20LOTU%20Espacio%20Digital" 
                target="_blank" 
                class="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 text-white font-bold text-xs tracking-wider uppercase mt-2">
-                <span>Contactar por WhatsApp</span>
-                <span>💬</span>
+                <span>Cotizar Proyecto</span>
+                <span>🚀</span>
             </a>
         </div>
     </header>
@@ -360,11 +360,12 @@
     </section>
 
     <!-- ==========================================
-         6. CONTACTO & PREGUNTAS FRECUENTES (FAQ)
+         6. CONTACTO & PREGUNTAS FRECUENTES (FAQ) CON CARRUSEL MOBILE
          ========================================== -->
     <section id="contacto" class="py-16 md:py-20 relative max-w-7xl mx-auto px-6">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             
+            <!-- Tarjeta de Contacto -->
             <div class="bg-slate-900/80 border border-slate-800 rounded-3xl p-6 sm:p-8 md:p-10 backdrop-blur-xl relative overflow-hidden">
                 <div class="absolute -top-12 -right-12 w-40 h-40 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none"></div>
                 
@@ -395,23 +396,33 @@
                 </div>
             </div>
 
-            <!-- Preguntas Frecuentes -->
-            <div class="space-y-4 sm:space-y-6">
-                <h3 class="text-lg sm:text-2xl font-bold text-white mb-4 sm:mb-6">Preguntas Frecuentes</h3>
-
-                <div class="p-5 sm:p-6 rounded-2xl bg-slate-900/50 border border-slate-800">
-                    <h4 class="text-white text-xs sm:text-sm font-semibold mb-2">¿Cómo se gestiona el mantenimiento mensual?</h4>
-                    <p class="text-slate-400 text-xs leading-relaxed">Coordinamos la carga de productos, fotos y promociones mediante planillas compartidas o carpetas en la nube. Vos nos pasás las novedades y nosotras nos encargamos de subirlas.</p>
+            <!-- Preguntas Frecuentes (Carrusel en Mobile / Apiladas en Desktop) -->
+            <div>
+                <div class="flex items-center justify-between mb-4 sm:mb-6">
+                    <h3 class="text-lg sm:text-2xl font-bold text-white">Preguntas Frecuentes</h3>
+                    <!-- Indicador táctil deslizable solo visible en Celulares -->
+                    <span class="text-[11px] text-cyan-400 md:hidden bg-cyan-950/60 border border-cyan-800/40 py-1 px-3 rounded-full animate-pulse">
+                        Deslizá 👈 👉
+                    </span>
                 </div>
 
-                <div class="p-5 sm:p-6 rounded-2xl bg-slate-900/50 border border-slate-800">
-                    <h4 class="text-white text-xs sm:text-sm font-semibold mb-2">¿Trabajan con tiendas de todo el país?</h4>
-                    <p class="text-slate-400 text-xs leading-relaxed">Sí, al ser servicios 100% digitales trabajamos con marcas y emprendimientos de toda la Argentina de forma remota y fluida.</p>
-                </div>
+                <div class="flex md:flex-col gap-4 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-4 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0">
+                    
+                    <div class="snap-center min-w-[80vw] sm:min-w-[300px] md:min-w-0 p-5 sm:p-6 rounded-2xl bg-slate-900/50 border border-slate-800 flex-shrink-0">
+                        <h4 class="text-white text-xs sm:text-sm font-semibold mb-2">¿Cómo se gestiona el mantenimiento mensual?</h4>
+                        <p class="text-slate-400 text-xs leading-relaxed">Coordinamos la carga de productos, fotos y promociones mediante planillas compartidas o carpetas en la nube. Vos nos pasás las novedades y nosotras nos encargamos de subirlas.</p>
+                    </div>
 
-                <div class="p-5 sm:p-6 rounded-2xl bg-slate-900/50 border border-slate-800">
-                    <h4 class="text-white text-xs sm:text-sm font-semibold mb-2">¿Qué pasa si requiero funciones personalizadas?</h4>
-                    <p class="text-slate-400 text-xs leading-relaxed">Desarrollamos e integramos micro-apps a medida (calculadoras, sistemas de reservas o integraciones específicas) adaptadas a la lógica de tu negocio.</p>
+                    <div class="snap-center min-w-[80vw] sm:min-w-[300px] md:min-w-0 p-5 sm:p-6 rounded-2xl bg-slate-900/50 border border-slate-800 flex-shrink-0">
+                        <h4 class="text-white text-xs sm:text-sm font-semibold mb-2">¿Trabajan con tiendas de todo el país?</h4>
+                        <p class="text-slate-400 text-xs leading-relaxed">Sí, al ser servicios 100% digitales trabajamos con marcas y emprendimientos de toda la Argentina de forma remota y fluida.</p>
+                    </div>
+
+                    <div class="snap-center min-w-[80vw] sm:min-w-[300px] md:min-w-0 p-5 sm:p-6 rounded-2xl bg-slate-900/50 border border-slate-800 flex-shrink-0">
+                        <h4 class="text-white text-xs sm:text-sm font-semibold mb-2">¿Qué pasa si requiero funciones personalizadas?</h4>
+                        <p class="text-slate-400 text-xs leading-relaxed">Desarrollamos e integramos micro-apps a medida (calculadoras, sistemas de reservas o integraciones específicas) adaptadas a la lógica de tu negocio.</p>
+                    </div>
+
                 </div>
             </div>
 
