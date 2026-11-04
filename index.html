@@ -50,7 +50,7 @@
                 <a href="#contacto" class="hover:text-cyan-400 transition-colors">Contacto</a>
             </nav>
 
-            <!-- Botón CTA Escritorio Mejorado -->
+            <!-- Botón CTA Escritorio -->
             <a href="https://wa.me/5491170597547?text=Hola!%20Quiero%20cotizar%20un%20proyecto%20con%20LOTU%20Espacio%20Digital" 
                target="_blank" 
                class="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 text-white font-semibold text-xs tracking-wider uppercase shadow-md shadow-indigo-600/20 hover:from-indigo-500 hover:to-cyan-500 transition-all">
@@ -193,7 +193,7 @@
     </section>
 
     <!-- ==========================================
-         5. PLANES DE PRECIOS CON CARRUSEL MOBILE
+         5. PLANES DE PRECIOS CON MEDIDAS DE CONTENEDOR OPTIMIZADAS
          ========================================== -->
     <section id="planes" class="py-16 md:py-24 relative max-w-7xl mx-auto px-6 overflow-hidden">
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -218,11 +218,11 @@
             </div>
         </div>
 
-        <!-- Contenedor Carrusel Horizontal en Mobile / Grilla en Desktop -->
-        <div class="flex md:grid md:grid-cols-3 gap-6 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-6 md:pb-0 relative z-10 -mx-6 px-6 md:mx-0 md:px-0">
+        <!-- Contenedor Carrusel Horizontal en Mobile / Grilla en Desktop con Espaciado Perfecto -->
+        <div class="flex md:grid md:grid-cols-3 gap-6 overflow-x-auto snap-x snap-mandatory no-scrollbar py-4 md:py-0 relative z-10 -mx-6 px-6 md:mx-0 md:px-0">
             
             <!-- PLAN 1: EMPRENDEDOR -->
-            <div class="snap-center min-w-[85vw] sm:min-w-[320px] md:min-w-0 flex-1 group relative rounded-3xl p-6 sm:p-8 bg-slate-900/70 border border-slate-800 backdrop-blur-xl flex flex-col justify-between transition-all duration-300">
+            <div class="snap-center w-[85vw] sm:w-[320px] md:w-auto flex-shrink-0 md:flex-shrink group relative rounded-3xl p-6 sm:p-8 bg-slate-900/70 border border-slate-800 backdrop-blur-xl flex flex-col justify-between transition-all duration-300">
                 <div>
                     <div class="flex items-center justify-between mb-4">
                         <span class="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Paso Inicial</span>
@@ -263,18 +263,18 @@
                 </div>
             </div>
 
-            <!-- PLAN 2: CRECIMIENTO (DESTACADO) -->
-            <div class="snap-center min-w-[85vw] sm:min-w-[320px] md:min-w-0 flex-1 group relative rounded-3xl p-6 sm:p-8 bg-gradient-to-b from-indigo-950/40 via-slate-900/90 to-slate-900 border-2 border-indigo-500/60 backdrop-blur-xl flex flex-col justify-between transition-all duration-300">
+            <!-- PLAN 2: CRECIMIENTO (DESTACADO - BADGE INTEGRADO INTERNO) -->
+            <div class="snap-center w-[85vw] sm:w-[320px] md:w-auto flex-shrink-0 md:flex-shrink group relative rounded-3xl p-6 sm:p-8 bg-gradient-to-b from-indigo-950/50 via-slate-900/90 to-slate-900 border-2 border-indigo-500/80 backdrop-blur-xl flex flex-col justify-between transition-all duration-300 shadow-xl shadow-indigo-600/10">
                 
-                <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-indigo-500 to-cyan-500 text-white text-[10px] font-bold tracking-widest uppercase rounded-full shadow-lg shadow-indigo-500/30">
-                    Más Popular
-                </div>
-
                 <div>
-                    <div class="flex items-center justify-between mb-4 pt-2">
+                    <div class="flex items-center justify-between mb-4">
                         <span class="text-[11px] font-semibold uppercase tracking-wider text-indigo-400">Escalabilidad</span>
-                        <span class="w-2.5 h-2.5 rounded-full bg-indigo-400 animate-pulse"></span>
+                        <!-- Badge Popular Integrado Internamente sin desbordar -->
+                        <span class="px-2.5 py-0.5 bg-gradient-to-r from-indigo-500 to-cyan-500 text-white text-[10px] font-bold tracking-wider uppercase rounded-full shadow-md">
+                            MÁS POPULAR
+                        </span>
                     </div>
+
                     <h3 class="text-xl sm:text-2xl font-extrabold text-white mb-2">Plan Crecimiento</h3>
                     <p class="text-slate-400 text-xs leading-relaxed mb-6">
                         Diseñado para tiendas activas que buscan posicionar fichas en Google y acelerar sus ventas.
@@ -315,7 +315,7 @@
             </div>
 
             <!-- PLAN 3: PARTNER -->
-            <div class="snap-center min-w-[85vw] sm:min-w-[320px] md:min-w-0 flex-1 group relative rounded-3xl p-6 sm:p-8 bg-slate-900/70 border border-slate-800 backdrop-blur-xl flex flex-col justify-between transition-all duration-300">
+            <div class="snap-center w-[85vw] sm:w-[320px] md:w-auto flex-shrink-0 md:flex-shrink group relative rounded-3xl p-6 sm:p-8 bg-slate-900/70 border border-slate-800 backdrop-blur-xl flex flex-col justify-between transition-all duration-300">
                 <div>
                     <div class="flex items-center justify-between mb-4">
                         <span class="text-[11px] font-semibold uppercase tracking-wider text-cyan-400">Solución Full</span>
@@ -360,7 +360,7 @@
     </section>
 
     <!-- ==========================================
-         6. CONTACTO & PREGUNTAS FRECUENTES (FAQ CORREGIDO PARA MOBILE)
+         6. CONTACTO & PREGUNTAS FRECUENTES (FAQ)
          ========================================== -->
     <section id="contacto" class="py-16 md:py-20 relative max-w-7xl mx-auto px-6">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch">
@@ -398,32 +398,27 @@
                 </div>
             </div>
 
-            <!-- Preguntas Frecuentes (Carrusel con contenedor optimizado para Mobile) -->
+            <!-- Preguntas Frecuentes -->
             <div class="flex flex-col justify-between">
                 <div class="flex items-center justify-between mb-4 sm:mb-6">
                     <h3 class="text-lg sm:text-2xl font-bold text-white">Preguntas Frecuentes</h3>
-                    <!-- Indicador táctil deslizable solo visible en Celulares -->
                     <span class="text-[11px] text-cyan-400 md:hidden bg-cyan-950/60 border border-cyan-800/40 py-1 px-3 rounded-full animate-pulse">
                         Deslizá 👈 👉
                     </span>
                 </div>
 
-                <!-- Carrusel Táctil Ajustado -->
                 <div class="flex md:flex-col gap-4 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-4 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0">
                     
-                    <!-- Pregunta 1 -->
                     <div class="snap-center w-[85vw] sm:w-[320px] md:w-full flex-shrink-0 p-5 sm:p-6 rounded-2xl bg-slate-900/60 border border-slate-800 backdrop-blur-md flex flex-col justify-center min-h-[140px]">
                         <h4 class="text-white text-xs sm:text-sm font-bold mb-2 leading-snug">¿Cómo se gestiona el mantenimiento mensual?</h4>
                         <p class="text-slate-400 text-[11px] sm:text-xs leading-relaxed">Coordinamos la carga de productos y promociones mediante planillas compartidas o carpetas en la nube. Vos nos pasás las novedades y nosotras nos encargamos de subirlas.</p>
                     </div>
 
-                    <!-- Pregunta 2 -->
                     <div class="snap-center w-[85vw] sm:w-[320px] md:w-full flex-shrink-0 p-5 sm:p-6 rounded-2xl bg-slate-900/60 border border-slate-800 backdrop-blur-md flex flex-col justify-center min-h-[140px]">
                         <h4 class="text-white text-xs sm:text-sm font-bold mb-2 leading-snug">¿Trabajan con tiendas de todo el país?</h4>
                         <p class="text-slate-400 text-[11px] sm:text-xs leading-relaxed">Sí, al ser servicios 100% digitales trabajamos con marcas y emprendimientos de toda la Argentina de forma remota y fluida.</p>
                     </div>
 
-                    <!-- Pregunta 3 -->
                     <div class="snap-center w-[85vw] sm:w-[320px] md:w-full flex-shrink-0 p-5 sm:p-6 rounded-2xl bg-slate-900/60 border border-slate-800 backdrop-blur-md flex flex-col justify-center min-h-[140px]">
                         <h4 class="text-white text-xs sm:text-sm font-bold mb-2 leading-snug">¿Qué pasa si requiero funciones personalizadas?</h4>
                         <p class="text-slate-400 text-[11px] sm:text-xs leading-relaxed">Desarrollamos e integramos micro-apps a medida (calculadoras, sistemas de reservas o integraciones específicas) adaptadas a la lógica de tu negocio.</p>
